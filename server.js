@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://brianbui027:brianbui027@gotel.pkl54mr.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect();
 
 // Create a Hotel model
 const Hotel = mongoose.model('Hotel', {
