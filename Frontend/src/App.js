@@ -5,6 +5,7 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
+import MapContainer from './pages/map';
 import Home from "./pages";
 import About from "./pages/about";
 import Homepage from "./pages/homepage";
@@ -18,15 +19,9 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route
-                    path="/contact"
-                    element={<Contact />}
-                />
+                <Route path="/contact" element={<Contact />}/>
                 <Route path="/homepage" element={<Homepage />} />
-                <Route
-                    path="/sign-up"
-                    element={<SignUp />}
-                />
+                <Route path="/sign-up" element={<SignUp />} />
             </Routes>
         </Router>
     );
