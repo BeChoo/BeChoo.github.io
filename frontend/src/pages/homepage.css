@@ -1,55 +1,60 @@
+/* Styling for the search bar */
 .searchBar {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  text-align: center; /* Align text to the center */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Align items vertically */
   justify-content: center; /* Center items vertically */
   align-items: center; /* Center items horizontally */
-  width: 30vw;
-  padding: 0.5vw 1vw;
-  border-radius: 10px;
+  width: 30vw; /* Set width to 30% of viewport width */
+  padding: 0.5vw 1vw; /* Padding */
+  border-radius: 10px; /* Rounded corners */
 }
 
+/* Styling for the input field */
 input {
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 10px;
-  padding: 1vw 1vw;
-  outline: none;
-  margin: 5px;
+  border: 1px solid rgb(0, 0, 0); /* Black border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 1vw 1vw; /* Padding */
+  outline: none; /* Remove default outline */
+  margin: 5px; /* Margin */
 }
 
+/* Styling for centering elements */
 .center {
   text-align: center; /* Center text */
 }
 
-/* arrow, right, and left to create arrows for navigating through a displayed hotel */
+/* Styling for the arrows */
 .arrow {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}
-.right {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-}
-.left {
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
+  border: solid black; /* Black border */
+  border-width: 0 3px 3px 0; /* Border shape for arrow */
+  display: inline-block; /* Display as inline-block */
+  padding: 3px; /* Padding */
 }
 
-/* Three image containers (use 25% for four, 33.33% for three and 50% for two, etc) */
+/* Styling for the right arrow */
+.right {
+  transform: rotate(-45deg); /* Rotate arrow to the right */
+  -webkit-transform: rotate(-45deg); /* For Safari */
+}
+
+/* Styling for the left arrow */
+.left {
+  transform: rotate(135deg); /* Rotate arrow to the left */
+  -webkit-transform: rotate(135deg); /* For Safari */
+}
+
+/* Styling for the image containers */
 .column {
-  display: flex;
+  display: flex; /* Use flexbox */
   justify-content: center; /* Center items horizontally */
   align-items: center; /* Center items vertically */
-  width: 33.33%;
+  width: 33.33%; /* Set width to 33.33% */
 }
 
 /* Clear floats after image containers */
 .row::after {
-  content: "";
-  clear: both;
-  display: table;
+  content: ""; /* Empty content */
+  clear: both; /* Clear floats */
+  display: table; /* Display as table */
 }
-
-
