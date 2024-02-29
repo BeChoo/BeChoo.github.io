@@ -1,40 +1,47 @@
-/* body is the entire page */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: skyblue;
-  }
-  
-  /* .title is above the .login */
-  .title {
-    text-align: center;
-    width: 60vw;
-    background-color: rgb(193, 189, 197);
-    padding: 2vw 1vw;
-    border-radius: 10px 10px 10px 10px;
-    font-size: 2rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
-  
-  /* .login is where users will input account information */
-  .login {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin: auto; 
-    width: 30vw;
-    padding: 0.5vw 1vw;
-    background-color: rgb(193, 189, 197);
-    border-radius: 10px 10px 10px 10px;
-  }
-  
-  input {
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 10px;
-    padding: 1vw 1vw;
-    outline: none;
-    margin: 5px;
-  }
-  
-  
+/* Container to center the sign-up form */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 85px; /* Set the top margin to the height of the Navbar */
+  flex-direction: column; /* Align items vertically */
+}
+
+/* .login is where users will input account information */
+.login {
+  text-align: center;
+  width: 30vw;
+  padding: 0.5vw 1vw;
+  background-color: #ffffb3;
+  border-radius: 10px;
+}
+
+/* Stack inputs on top of each other */
+.login label,
+.login input {
+  display: block; /* Set inputs and labels to display block */
+  margin-bottom: 10px; /* Add some space between inputs */
+}
+
+/* Center inputs and submit button */
+.login input[type="email"],
+.login input[type="password"],
+.login input[type="submit"] {
+  width: calc(100% - 40px); /* Set inputs and submit button to fill the width of the form minus some padding */
+  margin-bottom: 10px; /* Add some space between inputs and submit button */
+}
+
+input[type="submit"] {
+  background-color: skyblue; /* Set background color for submit button */
+  padding: 10px; /* Adjust padding for better appearance */
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+input {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 1vw;
+  outline: none;
+  margin: 5px;
+}

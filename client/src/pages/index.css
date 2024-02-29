@@ -1,0 +1,26 @@
+.centered-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.image-container {
+    margin: 10px; /* Adjust spacing between images */
+    animation: fade 8s infinite; /* Adjust the duration (8s) as needed */
+}
