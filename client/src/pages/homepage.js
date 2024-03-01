@@ -1,41 +1,26 @@
-// Filename - pages/homepage.js
-
 import React from 'react';
-import './homepage.css'; // Importing CSS for styling
-import MapContainer from './map'; // Importing MapContainer component
+import { Link } from 'react-router-dom';
+import hotelSchemas from '../data/hotelData'; // Update this with the correct path to your hotel data file
 
-// Functional component Homepage
 const Homepage = () => {
   return (
     <div>
-      {/* Header section */}
-      <header className="center">
-        <h1>This is our homepage. Begin browsing hotels below!</h1>
-      </header>
-
-      {/* Main section */}
-      <main>
-        {/* Search bar */}
-        <form className="searchBar ">
-          <input type="search" />
-        </form>
-
-        {/* Map container */}
-        <div className="map-container center">
-          <MapContainer /> {/* Rendering MapContainer component */}
+      {hotelSchemas.map((row, index) => (
+        <div key={index} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+          {row.map((hotel, i) => (
+            <div key={i} style={{ width: '30%' }}>
+              <Link to={`/hotel/${hotel.id}`}>
+                <h3>{hotel.name}</h3>
+                <img src={hotel.image} alt={hotel.name} style={{ maxWidth: '100%', height: 'auto' }} />
+              </Link>
+            </div>
+          ))}
+          {/* Render an empty div only if there are exactly 2 hotels in the row */}
+          {row.length === 2 && <div style={{ width: '30%' }}></div>}
         </div>
-
-        {/* Row section for previous and next hotel */}
-        <div className="row ">
-          <div className="column">
-            <p>Previous Hotel <i className="arrow left"></i></p>
-            <img src="https://via.placeholder.com/300" alt="Placeholder" />
-            <p>Next Hotel <i className="arrow right"></i></p>
-          </div>
-        </div>
-      </main>
+      ))}
     </div>
   );
 };
 
-export default Homepage; // Exporting Homepage component
+export default Homepage;

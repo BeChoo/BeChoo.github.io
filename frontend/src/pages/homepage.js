@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import hotelSchemas from '../data/hotelData'; // Update this with the correct path to your hotel data file
+import hotelSchemas from '../../../client/src/data/hotelData'; // Update this with the correct path to your hotel data file
 
 const Homepage = () => {
   return (
