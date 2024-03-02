@@ -26,7 +26,7 @@ function App() {
                 <Route path="/mappage" element={<Mappage />} />
                 <Route path="/compare" element={<Compare />} />
                 <Route path="/sign-up" element={<SignUp />} />
-                <Route path="/hotel/:id" component={HotelDetailPage} />
+                <Route path="/hotel/:id" element={<HotelDetailPage />} />
             </Routes>
         </Router>
     );

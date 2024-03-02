@@ -14,7 +14,7 @@ const HotelDetailPage = () => {
     <div>
       <h2>{hotel.name}</h2>
       <img src={hotel.image} alt={hotel.name} style={{ maxWidth: '100%', height: 'auto' }} />
-      <Link to="/">Go back to homepage</Link>
+      <Link to="/homepage">Go back to homepage</Link>
     </div>
   );
 };
