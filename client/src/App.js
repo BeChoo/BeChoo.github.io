@@ -1,5 +1,6 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import { FaSearchLocation } from "react-icons/fa";
+import Navbar from "./components/NavbarElements";
 import {
     BrowserRouter as Router,
     Routes,
@@ -10,7 +11,7 @@ import About from "./pages/about";
 import Homepage from "./pages/homepage";
 import SignUp from "./pages/signup";
 import Contact from "./pages/contact";
- 
+
 function App() {
     return (
         <Router>
@@ -31,5 +32,5 @@ function App() {
         </Router>
     );
 }
- 
+
 export default App;
