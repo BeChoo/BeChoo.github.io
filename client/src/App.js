@@ -11,6 +11,7 @@ import About from "./pages/about";
 import Homepage from "./pages/homepage";
 import SignUp from "./pages/signup";
 import Contact from "./pages/contact";
+import Search from "./pages/search";
 
 function App() {
     return (
@@ -19,15 +20,10 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route
-                    path="/contact"
-                    element={<Contact />}
-                />
+                <Route path="/contact" element={<Contact />} />
                 <Route path="/homepage" element={<Homepage />} />
-                <Route
-                    path="/sign-up"
-                    element={<SignUp />}
-                />
+                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="search" element={<Search />} />
             </Routes>
         </Router>
     );
