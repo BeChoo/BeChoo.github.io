@@ -1,0 +1,58 @@
+/* Styling for the title */
+.title {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  height: 100px; /* Set a fixed height to create space */
+}
+
+/* Styling for the row */
+.row {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+}
+
+/* Styling for arrows used for navigating through a displayed hotel */
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+.right {
+  transform: rotate(-45deg); /* Rotate arrow to the right */
+  -webkit-transform: rotate(-45deg); /* For older webkit-based browsers */
+}
+.left {
+  transform: rotate(135deg); /* Rotate arrow to the left */
+  -webkit-transform: rotate(135deg); /* For older webkit-based browsers */
+}
+
+/* Styling for the green arrow indicating higher rating */
+.rating-arrow.up {
+  color: green;
+}
+
+/* Styling for the red arrow indicating lower rating */
+.rating-arrow.down {
+  color: red;
+}
+
+/* Styling for image containers */
+img {
+  margin: 10px; /* Add margin around images */
+}
+
+/* Styling for the content */
+.content {
+  flex-direction: column;
+  align-items: center; /* Center items vertically */
+  text-align: center; /* Center text horizontally */
+  margin: 0 20px; /* Add margin for spacing between contents */
+}
+
+/* Styling for the hotel info */
+.hotel-info {
+  text-align: left;
+  margin-top: 10px; /* Add margin on top of hotel info */
+}
