@@ -13,14 +13,11 @@ const Navbar = () => {
                     <NavLink to="/index" activeStyle>
                         Initial
                     </NavLink>
-                    <NavLink to="/about" activeStyle>
-                        About
-                    </NavLink>
                     <NavLink to="/homepage" activeStyle>
                         Home
                     </NavLink>
                     <NavLink to="/mappage" activeStyle>
-                        Use A Map
+                        Browse Hotels
                     </NavLink>
                     <NavLink to="/compare" activeStyle>
                         Compare Hotels
@@ -28,8 +25,11 @@ const Navbar = () => {
                     <NavLink to="/sign-up" activeStyle>
                         Sign Up
                     </NavLink>
+                    <NavLink to="/about" activeStyle>
+                        About
+                    </NavLink>
                 </NavMenu>
-            </Nav>
+            </Nav >
         </>
     );
 };
