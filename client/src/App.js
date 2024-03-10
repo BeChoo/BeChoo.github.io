@@ -13,7 +13,7 @@ import SignUp from "./pages/signup";
 import Compare from "./pages/compare";
 import Mappage from "./pages/mappage";
 import HotelDetailPage from "./pages/hoteldetails";
- 
+
 function App() {
     return (
         <Router>
@@ -31,5 +31,5 @@ function App() {
         </Router>
     );
 }
- 
+
 export default App;

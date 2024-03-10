@@ -9,6 +9,10 @@ const app = express();
 app.use(express.json()); // Parse incoming JSON requests
 app.use(cors({ origin: true })); // Enable CORS with origin true
 
+// For user profile (Brian C.)
+app.use("/api/users", userRoutes);
+app.use("/api/notes", noteRoutes);
+
 // POST route for authentication
 app.post("/authenticate", async (req, res) => {
   const { username } = req.body; // Extract username from request body
