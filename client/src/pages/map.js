@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 // const API_KEY = process.env.REACT_APP_GMAPS_KEY;
@@ -19,17 +19,19 @@ class MapContainer extends Component {
 
     return (
       // Render the Map component provided by google-maps-react
-      <Map
-        google={google}
-        zoom={15}
-        initialCenter={defaultCoords}
-        style={mapStyles}
-      />
-    </div>
-  );
-};
+      <div>
+        <Map
+          google={this.props.google}
+          zoom={15}
+          initialCenter={defaultCoords}
+          style={mapStyles}
+        />
+      </div>
+    );
+  };
 
 // Export the MapContainer component wrapped with GoogleApiWrapper
 export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GMAPS_KEY
-})(MapContainer)
+    apiKey: process.env.REACT_APP_GMAPS_KEY
+  })(MapContainer)
+  

@@ -1,10 +1,6 @@
 // Filename - "./components/Navbar.js
 
-
 import React from "react";
-import { Nav, NavLink, NavMenu, LogoImage } from "./NavbarElements";
-import GotelLogo from "../../images/GotelLogo.png"; // Path to your logo image
-
 import { Nav, NavLink, NavMenu, LogoImage } from "./NavbarElements";
 import GotelLogo from "../../images/GotelLogo.png"; // Path to your logo image
 
