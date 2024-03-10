@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './mappage.css'; // Importing CSS for styling
-import MapContainer from './map'; // Importing MapContainer component
+import './mappage.css';
+import MapContainer from './map';
 
 // Functional component Homepage
 const Mappage = () => {
@@ -29,16 +29,7 @@ const Mappage = () => {
 
         {/* Map container */}
         <div className="map-container center">
-          <MapContainer city={city} /> {/* Rendering MapContainer component */}
-        </div>
-
-        {/* Row section for previous and next hotel */}
-        <div className="row">
-          <div className="column">
-            <p>Previous Hotel <i className="arrow left"></i></p>
-            <img src="https://via.placeholder.com/300" alt="Placeholder" />
-            <p>Next Hotel <i className="arrow right"></i></p>
-          </div>
+          <MapContainer city={city} />
         </div>
       </main>
     </div>

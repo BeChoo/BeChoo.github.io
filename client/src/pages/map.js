@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 
-const GMAPS_KEY = process.env.REACT_APP_GMAPS_KEY;
+// const API_KEY = process.env.REACT_APP_GMAPS_KEY;
 
 class MapContainer extends Component {
   render() {
@@ -11,15 +11,18 @@ class MapContainer extends Component {
       height: '500px', // Adjust the height 
       display: 'flex' // Using flex to control layout
     };
+
+    const defaultCoords = {
+      lat: 33.7701,
+      lng: -118.1937
+    }
+
     return (
       // Render the Map component provided by google-maps-react
       <Map
         google={this.props.google}
         zoom={15}
-        initialCenter={{
-          lat: 33.770050, // latitude of the center of the map
-          lng: -118.193741 // longitude of the center of the map
-        }}
+        initialCenter={defaultCoords}
         style={mapStyles}
       />
     );
@@ -28,5 +31,5 @@ class MapContainer extends Component {
 
 // Export the MapContainer component wrapped with GoogleApiWrapper
 export default GoogleApiWrapper({
-  apiKey: { GMAPS_KEY }
-})(MapContainer);
+  apiKey: process.env.REACT_APP_GMAPS_KEY
+})(MapContainer)
