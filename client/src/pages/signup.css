@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 85px; /* Set the top margin to the height of the Navbar */
+  margin-top: 85px; 
   flex-direction: column; /* Align items vertically */
 }
 
@@ -26,7 +26,8 @@
 /* Center inputs and submit button */
 .login input[type="email"],
 .login input[type="password"],
-.login input[type="submit"] {
+.login input[type="submit"],
+.login input[type="text"] { /* Added the selector for text input */
   width: calc(100% - 40px); /* Set inputs and submit button to fill the width of the form minus some padding */
   margin-bottom: 10px; /* Add some space between inputs and submit button */
 }
