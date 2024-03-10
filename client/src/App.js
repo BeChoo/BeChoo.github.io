@@ -6,6 +6,7 @@ import {
     Route,
 } from "react-router-dom";
 import './App.css';
+import './App.css';
 import Home from "./pages";
 import About from "./pages/about";
 import Homepage from "./pages/homepage";
@@ -21,15 +22,19 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/index" element={<Home />} />
+                <Route path="/index" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/homepage" element={<Homepage />} />
                 <Route path="/mappage" element={<Mappage />} />
                 <Route path="/compare" element={<Compare />} />
+                <Route path="/mappage" element={<Mappage />} />
+                <Route path="/compare" element={<Compare />} />
                 <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/hotel/:id" element={<HotelDetailPage />} />
                 <Route path="/hotel/:id" element={<HotelDetailPage />} />
             </Routes>
         </Router>
     );
 }
-
+ 
 export default App;
