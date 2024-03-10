@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './compare.css';
+import Navbar from "../components/Navbar";
 import hotelSchemas from '../data/hotelData'; // Import hotelSchemas from hotelData.js
 
 const Compare = () => {
@@ -41,6 +42,7 @@ const Compare = () => {
 
     return (
         <div>
+            <Navbar />
             <h1 className="title">
                 Compare Hotels
             </h1>

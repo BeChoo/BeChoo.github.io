@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from "../components/Navbar";
 import './mappage.css'; // Importing CSS for styling
 import MapContainer from './map'; // Importing MapContainer component
 
@@ -15,6 +16,7 @@ const Mappage = () => {
 
   return (
     <div>
+      <Navbar />
       {/* Header section */}
       <header>
         <h1>Browse hotels below</h1>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from "../components/Navbar";
 import { Link, useParams } from 'react-router-dom';
 import hotelSchemas from '../data/hotelData'; // Update this with the correct path to your hotel data file
 
@@ -12,6 +13,7 @@ const HotelDetailPage = () => {
 
   return (
     <div>
+      <Navbar />
       <h2>{hotel.name}</h2>
       <img src={hotel.image} alt={hotel.name} style={{ maxWidth: '100%', height: 'auto' }} />
       <Link to="/homepage">Go back to homepage</Link>

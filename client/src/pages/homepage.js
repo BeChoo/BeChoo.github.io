@@ -1,10 +1,12 @@
 import React from 'react';
+import Navbar from "../components/Navbar";
 import { Link } from 'react-router-dom';
 import hotelSchemas from '../data/hotelData'; // Update this with the correct path to your hotel data file
 
 const Homepage = () => {
   return (
     <div>
+      <Navbar />
       {hotelSchemas.map((row, index) => (
         <div key={index} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
           {row.map((hotel, i) => (
