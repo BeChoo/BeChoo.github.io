@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import hotelSchemas from '../data/hotelData'; // Update this with the correct path to your hotel data file
+import './HotelDetails.css';
 
 const HotelDetailPage = () => {
   const { id } = useParams(); // Extracting the hotel ID from URL params

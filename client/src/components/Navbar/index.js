@@ -22,6 +22,9 @@ const Navbar = () => {
                     <NavLink to="/compare" activeStyle>
                         Compare Hotels
                     </NavLink>
+                    <NavLink to="/user-profile" activeStyle>
+                        User Profile
+                    </NavLink>
                     <NavLink to="/sign-up" activeStyle>
                         Sign Up
                     </NavLink>
