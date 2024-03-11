@@ -1,0 +1,42 @@
+/* UserProfile.css */
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.profile-name {
+    margin: 10px 0;
+}
+
+.profile-bio {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.saved-hotels ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.saved-hotels li {
+    background-color: #f0f0f0;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+}
