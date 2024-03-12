@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom'; // Import Link component
 import './compare.css';
 import hotelSchemas from '../data/hotelData'; // Import hotelSchemas from hotelData.js
 
@@ -48,7 +49,9 @@ const Compare = () => {
                 {hotelSchemas.map((hotels, index) => (
                     <div key={index} className="content">
                         <p onClick={() => navigatePrevious(index)}>Previous Hotel <i className="arrow left"></i></p>
-                        <img src={hotels[currentHotelIndices[index]].image} alt={hotels[currentHotelIndices[index]].name} />
+                        <Link to={`/hotel/${hotels[currentHotelIndices[index]].id}`}>
+                            <img src={hotels[currentHotelIndices[index]].image} alt={hotels[currentHotelIndices[index]].name} />
+                        </Link>
                         <p onClick={() => navigateNext(index)}>Next Hotel <i className="arrow right"></i></p>
                         <div className="hotel-info">
                             <p>Name: {hotels[currentHotelIndices[index]].name}</p>
