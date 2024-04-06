@@ -10,7 +10,7 @@ import SignUp from "./pages/signup";
 import Compare from "./pages/compare";
 import Mappage from "./pages/mappage";
 import HotelDetailPage from "./pages/hoteldetails";
-import UserProfile from "./components/UserProfile";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
     // Added state and saving hotels - Brian C.
