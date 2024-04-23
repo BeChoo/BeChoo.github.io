@@ -12,7 +12,9 @@ import Homepage from "./pages/homepage";
 import SignUp from "./pages/signup";
 import Compare from "./pages/compare";
 import Mappage from "./pages/mappage";
-import HotelDetailPage from "./pages/hoteldetails";
+import Hotel from './pages/Hotel';
+
+
  
 function App() {
     return (
@@ -23,10 +25,10 @@ function App() {
                 <Route path="/index" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/homepage" element={<Homepage />} />
+                <Route path="/hotel/:id" element={<Hotel />} />
                 <Route path="/mappage" element={<Mappage />} />
                 <Route path="/compare" element={<Compare />} />
                 <Route path="/sign-up" element={<SignUp />} />
-                <Route path="/hotel/:id" element={<HotelDetailPage />} />
             </Routes>
         </Router>
     );
