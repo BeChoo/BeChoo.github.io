@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require("cors");
 const CityModel = require('../client/src/pages/api/city');
 const hotelModel = require('../client/src/pages/api/hotels');
+const EmployeeModel = require('./models/User')
 
 const app = express();
 app.use(express.json());
@@ -49,29 +50,28 @@ app.get("/api/hotels", (req, res) => {
 
 app.post("/login", (req, res) => {
   const {email, password} = req.body
-  //Checks for user with email in collection
   EmployeeModel.findOne({email: email})
   .then(user => {
     if (user){
-      if(user.password === password){
-        res.json("Success")
-      }else{
-        res.json("The password is incorrect")
-      }
-      }else{
-        res.json("No record exists")
+        if(user.password === password){
+          res.json("Success")
+        }else{
+          res.json("The password is incorrect")
+        }
+    }else{
+      res.json("No record exists")
     }
-    })
   })
+})
 
 app.post('/register', (req, res) => {
-  //Creates new user account using the user schema
   EmployeeModel.create(req.body)
   .then(employees => res.json(employees))
   .catch(err => res.json(err))
-  })
+})
 
-const PORT = process.env.PORT || 3001;
+
+const PORT = process.env.PORT || 3002;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
