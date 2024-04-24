@@ -13,6 +13,8 @@ import SignUp from "./pages/signup";
 import Compare from "./pages/compare";
 import Mappage from "./pages/mappage";
 import Hotel from './pages/Hotel';
+import Signup from './pages/Signup.jsx'
+import Login from './pages/Login.jsx'
 
 
  
@@ -21,7 +23,8 @@ function App() {
         <Router>
             <Navbar />
             <Routes>
-                <Route exact path="/" element={<Home />} />
+                <Route exact path="/" element={<Signup />} />
+                <Route path='/login' element={<Login />} />
                 <Route path="/index" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/homepage" element={<Homepage />} />
