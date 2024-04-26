@@ -1,45 +1,54 @@
-// Filename - "./components/Navbar.js
-
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { Nav, NavLink, NavMenu, LogoImage } from "./NavbarElements";
-import GotelLogo from "../../images/GotelLogo.png"; // Path to your logo image
+import GotelLogo from "../../images/GotelLogo.png"; // Adjust the path to your logo image
+import { useUser } from "../../pages/UserContext"; // Adjust the path to UserContext if necessary
+import '../index.css';
 
 const Navbar = () => {
+    const { user, logout } = useUser();
+    const location = useLocation();
 
-        // Get current location
-        const location = useLocation();
-
-        // Function to determine whether to show Navbar
-        const showNavbar = () => {
-            // Check if the current path is not '/'
-            return location.pathname !== '/';
-        }
+    const showNavbar = () => {
+        return !['/', '/login'].includes(location.pathname);
+    };
 
     return (
         <>
-            {/* Conditionally render Navbar */}
             {showNavbar() && (
-            <Nav>
-                <NavMenu>
-                    <LogoImage src={GotelLogo} alt="GotelLogo" />
-                    <NavLink to="/index" activeStyle>
-                        Initial
-                    </NavLink>
-                    <NavLink to="/about" activeStyle>
-                        About
-                    </NavLink>
-                    <NavLink to="/homepage" activeStyle>
-                        Home
-                    </NavLink>
-                    <NavLink to="/mappage" activeStyle>
-                        Use A Map
-                    </NavLink>
-                    <NavLink to="/compare" activeStyle>
-                        Compare Hotels
-                    </NavLink>
-                </NavMenu>
-            </Nav>
+                <Nav>
+                    <NavMenu>
+                        <LogoImage src={GotelLogo} alt="GotelLogo" />
+                        <NavLink to="/index" activeStyle>
+                            Initial
+                        </NavLink>
+                        <NavLink to="/about" activeStyle>
+                            About
+                        </NavLink>
+                        <NavLink to="/homepage" activeStyle>
+                            Home
+                        </NavLink>
+                        <NavLink to="/mappage" activeStyle>
+                            Use A Map
+                        </NavLink>
+                        <NavLink to="/compare" activeStyle>
+                            Compare Hotels
+                        </NavLink>
+                        {user ? (
+                            <div className="dropdown">
+                                <button className="dropbtn">Profile</button>
+                                <div className="dropdown-content">
+                                    <Link to="/profile">View Profile</Link>
+                                    <button onClick={logout}>Logout</button>
+                                </div>
+                            </div>
+                        ) : (
+                            <NavLink to="/login" activeStyle>
+                                Sign In
+                            </NavLink>
+                        )}
+                    </NavMenu>
+                </Nav>
             )}
         </>
     );
