@@ -9,17 +9,19 @@ import './App.css';
 import Home from "./pages";
 import About from "./pages/about";
 import Homepage from "./pages/homepage";
-import SignUp from "./pages/signup";
 import Compare from "./pages/compare";
 import Mappage from "./pages/mappage";
 import Hotel from './pages/Hotel';
 import Signup from './pages/Signup.jsx'
 import Login from './pages/Login.jsx'
+import { UserProvider } from './pages/UserContext.js';
+import Profile from './pages/Profile';
 
 
  
 function App() {
     return (
+        <UserProvider>
         <Router>
             <Navbar />
             <Routes>
@@ -31,9 +33,10 @@ function App() {
                 <Route path="/hotel/:id" element={<Hotel />} />
                 <Route path="/mappage" element={<Mappage />} />
                 <Route path="/compare" element={<Compare />} />
-                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </Router>
+        </UserProvider>
     );
 }
  
