@@ -1,28 +1,32 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './signup.css'; // Import the CSS file
+import { useUser } from './UserContext.js'; // Adjust the path to UserContext if necessary
+import './signup.css'; // Assuming this is where you have general styles
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { login } = useUser();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/login', { email, password })
-            .then(result => {
-                console.log(result);
-                if (result.data === "Success") {
+        axios.post('http://localhost:3002/login', { email, password })
+            .then(response => {
+                if (response.data === "Success") {
+                    login({ email, password }); // Mocking user data storage, adjust as necessary
                     navigate('/index');
+                } else {
+                    setError(response.data);
                 }
             })
-            .catch(err => console.log(err));
-    }
-
-    const handleContinueAsGuest = () => {
-        navigate('/index');
-    }
+            .catch(error => {
+                console.error("Login failed:", error);
+                setError("Failed to communicate with the server.");
+            });
+    };
 
     return (
         <div className="container">
@@ -48,6 +52,7 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
+                {error && <div className="error">{error}</div>}
                 <button type="submit" className="btn btn-success w-100 rounded-0">
                     Login
                 </button>
@@ -56,10 +61,6 @@ function Login() {
             <Link to="/" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
                 Sign Up
             </Link>
-            <p>Or continue as a guest:</p>
-            <button className="btn btn-light w-100 rounded-0" onClick={handleContinueAsGuest}>
-                Continue as guest
-            </button>
         </div>
     );
 }
