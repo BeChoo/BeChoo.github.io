@@ -7,7 +7,7 @@ import './signup.css'; // Assuming this is where you have general styles
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [message, setMessage] = useState(''); // Added to handle messages
     const navigate = useNavigate();
     const { login } = useUser();
 
@@ -15,16 +15,17 @@ function Login() {
         e.preventDefault();
         axios.post('http://localhost:3002/login', { email, password })
             .then(response => {
-                if (response.data === "Success") {
-                    login({ email, password }); // Mocking user data storage, adjust as necessary
+                const { message, user } = response.data; // Expecting object with message and user
+                if (user) {
+                    login(user); // Store user in context/state
                     navigate('/index');
                 } else {
-                    setError(response.data);
+                    setMessage(message); // Display error message from server
                 }
             })
             .catch(error => {
-                console.error("Login failed:", error);
-                setError("Failed to communicate with the server.");
+                console.error("Login failed:", error.response ? error.response.data.message : "No response");
+                setMessage("Failed to communicate with the server.");
             });
     };
 
@@ -52,7 +53,7 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
-                {error && <div className="error">{error}</div>}
+                {message && <div className="error">{message}</div>}
                 <button type="submit" className="btn btn-success w-100 rounded-0">
                     Login
                 </button>
