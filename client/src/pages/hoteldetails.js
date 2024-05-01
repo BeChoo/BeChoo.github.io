@@ -34,21 +34,24 @@ const HotelDetailPage = () => {
 
   // Handler for submitting rating
   const handleSubmitRating = () => {
-    // Calculate new average rating
-    const totalRatings = hotel.ratings.length;
-    const newTotalRatings = totalRatings + 1;
-    const newAverageRating =
-      (hotel.rating * totalRatings + selectedRating) / newTotalRatings;
+    // Check if hotel and ratings exist
+    if (hotel && hotel.ratings){
+      // Calculate new average rating
+      const totalRatings = hotel.ratings.length;
+      const newTotalRatings = totalRatings + 1;
+      const newAverageRating =
+        (hotel.rating * totalRatings + selectedRating) / newTotalRatings;
 
-    // Update hotel rating
-    const updatedHotel = {
-      ...hotel,
-      rating: newAverageRating,
-      ratings: [...hotel.ratings, selectedRating],
-    };
+      // Update hotel rating
+      const updatedHotel = {
+        ...hotel,
+        rating: newAverageRating,
+        ratings: [...hotel.ratings, selectedRating],
+      };
 
-    // Update hotel in state
-    setHotel(updatedHotel);
+      // Update hotel in state
+      setHotel(updatedHotel);
+    }
 
     // Optionally, reset selected rating and hide the form
     setSelectedRating(0);
@@ -87,13 +90,14 @@ const HotelDetailPage = () => {
           style={{ maxWidth: '100%', height: 'auto', marginBottom: '20px' }}
         />
         <div>
-          <button onClick={toggleRatingFormVisibility} style={{ marginRight: '10px' }}>
+          <button onClick={toggleRatingFormVisibility} style={{ marginRight: '10px', padding: '10px 20px', borderRadius: '20px', backgroundColor: '#ffffb3', border: 'none', cursor: 'pointer', fontSize: '16px', }}>
             Leave a Rating
           </button>
-          <button onClick={toggleReviewFormVisibility}>Leave a Review</button>
+          <button onClick={toggleReviewFormVisibility} style={{padding: '10px 20px', borderRadius: '20px', backgroundColor: '#ffffb3', border: 'none', cursor: 'pointer', fontSize: '16px',}}>
+            Leave a Review</button>
         </div>
         {isRatingFormVisible && (
-          <div>
+          <div style={{ borderRadius: '20px', backgroundColor: '#ffffb3', padding: '20px', marginTop: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
             <p>Select your rating:</p>
             <div>
               {[1, 2, 3, 4, 5].map((rating) => (
@@ -106,20 +110,23 @@ const HotelDetailPage = () => {
                 </button>
               ))}
             </div>
-            <button onClick={handleSubmitRating}>Submit Rating</button>
+            <button onClick={handleSubmitRating} style={{padding: '10px 20px', borderRadius: '20px', backgroundColor: '#ffffb3', border: 'none', cursor: 'pointer', fontSize: '16px',}} >Submit Rating</button>
           </div>
         )}
         {isReviewFormVisible && (
-          <div>
+          <div style={{ borderRadius: '20px', backgroundColor: '#ffffb3', padding: '20px', marginTop: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
             <textarea
               value={reviewText}
               onChange={(e) => setReviewText(e.target.value)}
               placeholder="Write your review here..."
               style={{ width: '100%', minHeight: '100px', marginBottom: '10px' }}
             />
-            <button onClick={handleSubmitReview}>Submit Review</button>
+            <div>
+              <button onClick={handleSubmitReview} style={{padding: '10px 20px', borderRadius: '20px', backgroundColor: '#ffffb3', border: 'none', cursor: 'pointer', fontSize: '16px',}} >Submit Review</button>
+            </div>
           </div>
         )}
+
         <p>Rating: {hotel.rating}</p>
         <p>Average Price: ${hotel.priceAverage}</p>
         <p>Location: {hotel.location}</p>
