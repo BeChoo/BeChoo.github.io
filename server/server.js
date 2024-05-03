@@ -38,38 +38,47 @@ app.post('/register', (req, res) => {
 // Submit a review
 app.post('/submitReview', (req, res) => {
   const { userId, hotelId, rating, reviewText } = req.body;
-
-  console.log("Submitting review for user:", userId);  // Confirming ID is correct
-  console.log("Review details:", { hotelId, rating, reviewText });  // Confirming all data is correct
+  console.log("Submitting review for user:", userId);
+  console.log("Review details:", { hotelId, rating, reviewText });
 
   UserModel.findByIdAndUpdate(
       userId,
-      { $push: { reviews: { hotelId, rating, reviewText } } },
+      { $push: { reviews: { hotelId, rating, reviewText } } }, // Keep hotelId as a string
       { new: true, safe: true, upsert: true }
   )
   .then(user => {
-      console.log("Review added successfully:", user);  // Check what is returned
+      console.log("Review added successfully:", user);
       res.status(200).json(user);
   })
   .catch(err => {
-      console.error("Error submitting review:", err);  // Detailed error logging
-      res.status(500).json({ error: "Error submitting review", err });
+      console.error("Error submitting review:", err);
+      res.status(500).json({ error: "Error submitting review", details: err });
   });
 });
 
+
+
 // Get reviews by a user
 app.get('/userReviews/:userId', (req, res) => {
-  UserModel.findById(req.params.userId)
-    .populate('reviews')
-    .then(user => {
-      if (user) {
-        res.status(200).json(user.reviews);
+  const userId = req.params.userId;
+  console.log("Fetching reviews for user ID:", userId);
+  UserModel.findById(userId)
+  .populate('reviews')  // Ensure 'reviews' refers to a valid path if it’s supposed to be a populated field
+  .then(user => {
+      if (user && user.reviews) {
+          console.log("Reviews found:", user.reviews);
+          res.status(200).json(user.reviews);
       } else {
-        res.status(404).json({ message: "User not found" });
+          console.log("No user or reviews found for ID:", userId);
+          res.status(404).json({ message: "User not found or no reviews" });
       }
-    })
-    .catch(err => res.status(500).json({ error: "Error fetching reviews", err }));
+  })
+  .catch(err => {
+      console.error("Error fetching reviews for user ID:", userId, err);
+      res.status(500).json({ error: "Error fetching reviews", details: err });
+  });
 });
+
 
 
 
