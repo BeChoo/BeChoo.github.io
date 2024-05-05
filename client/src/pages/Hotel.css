@@ -6,9 +6,12 @@
   }
   
   .main-image img {
-    width: 80%; /* Adjust as needed */
-    height: auto; /* Maintain aspect ratio */
-  }
+    width: 100%;    /* This will make the image responsive to the container size */
+    height: auto;   /* Maintain aspect ratio */
+    max-width: 500px; /* Max width can be adjusted to fit your design */
+    max-height: 300px; /* Max height to control the image size */
+}
+
   
   .other-images {
     display: flex;
