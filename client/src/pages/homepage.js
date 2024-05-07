@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './homepage.css';
 
 export default function Home() {
@@ -13,6 +14,8 @@ export default function Home() {
     const [sortedHotels, setSortedHotels] = useState(null);
     const [sortByPrice, setSortByPrice] = useState(null); 
     const [sortByScore, setSortByScore] = useState(null); 
+    const [selectedHotels, setSelectedHotels] = useState([]);
+    const navigate = useNavigate();
 
     const getRatingDescription = (score) => {
         if (!score) return 'N/A'; // Return 'N/A' if score is not available
@@ -60,6 +63,28 @@ export default function Home() {
             console.log(error);
         }
     };
+
+    const handleSelectHotel = (hotelId) => {
+        const updatedSelection = selectedHotels.includes(hotelId)
+            ? selectedHotels.filter(id => id !== hotelId)
+            : [...selectedHotels, hotelId].slice(0, 2);
+
+        setSelectedHotels(updatedSelection);
+    };
+
+    const handleCompareHotels = () => {
+        if (selectedHotels.length === 2) {
+            const hotelsToCompare = hotels.filter(hotel => selectedHotels.includes(hotel.id));
+            // Store the data in local storage
+            localStorage.setItem('compareHotels', JSON.stringify(hotelsToCompare));
+            // Open a new tab
+            window.open('/compare', '_blank');
+        } else {
+            alert('Please select exactly two hotels to compare.');
+        }
+    };
+    
+    
 
     //Effect that sorts hotels based on price after rendering
     useEffect(() => {
@@ -189,6 +214,12 @@ export default function Home() {
         </div>
         {sortedHotels.map(hotel => (
             <div key={hotel.id} className="hotel-item">
+                 <input
+                                type="checkbox"
+                                checked={selectedHotels.includes(hotel.id)}
+                                onChange={() => handleSelectHotel(hotel.id)}
+                                disabled={selectedHotels.length >= 2 && !selectedHotels.includes(hotel.id)}
+                            />
                 <div className="hotel-info-container">
                     <div className="hotel-image-container">
                         <img
@@ -199,7 +230,6 @@ export default function Home() {
                     </div>
                     <div className="hotel-details">
     <h3 className="hotel-name">
-
         <a href={`/hotel/${hotel.id}`} target="_blank" rel="noopener noreferrer" style={{ color: 'black', textDecoration: 'none'}}>
             {hotel.name}
         </a>
@@ -222,6 +252,13 @@ export default function Home() {
                 </div>
             </div>
         ))}
+{selectedHotels.length === 2 && (
+    <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100%', padding: '10px', backgroundColor: 'rgba(0, 0, 0, 0.5)', textAlign: 'center', boxShadow: '0px -2px 10px rgba(0,0,0,0.1)' }}>
+        <button onClick={handleCompareHotels} style={{ padding: '10px 20px', fontSize: '16px', color: 'white', backgroundColor: '#007bff', border: 'none', borderRadius: '5px' }}>
+            Compare Selected Hotels
+        </button>
+    </div>
+)}
         </div>
         )}
     </div>
