@@ -1,0 +1,36 @@
+/* CompareHotels.css */
+.compare-header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.compare-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.compare-section {
+    width: 300px; /* fixed width for image container */
+}
+
+.compare-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.green-arrow {
+    color: green;
+}
+
+.red-arrow {
+    color: red;
+}
+
+.compare-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
