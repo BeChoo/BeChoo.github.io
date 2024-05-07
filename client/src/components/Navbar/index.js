@@ -31,9 +31,6 @@ const Navbar = () => {
                         <NavLink to="/mappage" activeStyle>
                             Use A Map
                         </NavLink>
-                        <NavLink to="/compare" activeStyle>
-                            Compare Hotels
-                        </NavLink>
                         {user ? (
                             <div className="dropdown">
                                 <button className="dropbtn">Profile</button>
