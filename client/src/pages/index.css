@@ -6,21 +6,65 @@
 }
 
 @keyframes fade {
-    0% {
-        opacity: 0;
-    }
-    25% {
-        opacity: 1;
-    }
-    75% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+    0% { opacity: 0; }
+    25% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 .image-container {
-    margin: 10px; /* Adjust spacing between images */
-    animation: fade 8s infinite; /* Adjust the duration (8s) as needed */
+    margin: 10px;
+    animation: fade 8s infinite;
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden; /* Prevents any overflow from the carousel */
+}
+
+.hotel-carousel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hotel-card {
+    width: 300px;
+    margin: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white; /* Set background color to white */
+}
+
+.hotel-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.hotel-info {
+    padding: 10px;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.carousel-controls button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.carousel-controls button:disabled {
+    background-color: #ccc;
+    cursor: default;
 }
