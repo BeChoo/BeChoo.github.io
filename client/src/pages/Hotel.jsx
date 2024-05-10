@@ -1,60 +1,70 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useUser } from './UserContext'; // Ensure path to UserContext is correct
 import './Hotel.css'; // Ensure path to CSS is correct
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const Hotel = () => {
-    // State variables initialization
     const [hotel, setHotel] = useState(null);
     const [rating, setRating] = useState(null);
     const [reviewText, setReviewText] = useState('');
-    const [reviewSubmitted, setReviewSubmitted] = useState(false);
-    const { user } = useUser();
+    const [isSaved, setIsSaved] = useState(false);
+    const { user, addReview, updateSavedHotels } = useUser();
+    const [map, setMap] = useState(null);
     const { id } = useParams();
 
-    // Fetch hotel details from backend on component mount
     useEffect(() => {
         const fetchHotelDetails = async () => {
             try {
-                const response = await axios.get(`/api/hotelDetails/`, { params: { hotel_id: id } });
+                // Construct the URL to your internal API that wraps the external Hotels.com API call
+                const url = `/api/hotelDetails?hotel_id=${id}`;
+                const response = await axios.get(url);
                 setHotel(response.data);
+                const alreadySaved = user?.savedHotels.some(hotel => hotel.hotelId === id);
+                setIsSaved(alreadySaved);
             } catch (error) {
                 console.error('Error fetching hotel details:', error);
             }
         };
         fetchHotelDetails();
-        // Dependency array to ensure the effect runs only when id changes
-    }, [id]);
- 
-    // Render loading message if hotel details are not yet available
-    if (!hotel) {
-        return <p>Loading hotel details...</p>;
-    }
+    }, [id, user?.savedHotels]);  // Ensure dependency on user's saved hotels
+    
+    // useEffect to add a marker once hotel and map are loaded
+    useEffect(() => {
+        if (hotel && map) {
+            const position = new google.maps.LatLng(
+                hotel.summary.location.coordinates.latitude,
+                hotel.summary.location.coordinates.longitude
+            );
 
-      // Destructure hotel data for easy access
-    const { summary, propertyGallery, reviewInfo } = hotel;
-    const topAmenities = summary?.amenities?.topAmenities?.items;
-
-    // Event handler to set rating state
+            new google.maps.Marker({
+                position: position,
+                map: map,
+                title: hotel.summary.name
+            });
+        }
+    }, [hotel, map]); // Depend on hotel and map being loaded
+    
     const handleRating = (star) => {
         setRating(star);
     };
 
-    // Function to submit a review
     const submitReview = async () => {
         if (!user || !user._id) {
             alert("Please log in to submit a review.");
             return;
         }
         try {
-            await axios.post('http://localhost:3002/submitReview', {
+            const { data } = await axios.post('https://gotel-frontend.vercel.app/submitReview', {
                 userId: user._id,
                 hotelId: id,
+                hotelName: hotel.summary.name,
+                hotelImageURL: hotel.propertyGallery.images[0].image.url,
                 rating,
                 reviewText,
             });
-            setReviewSubmitted(true);
+            addReview(data.review);
             alert("Review submitted successfully!");
         } catch (error) {
             console.error('Error submitting review:', error);
@@ -62,9 +72,38 @@ const Hotel = () => {
         }
     };
 
+    const toggleSave = async () => {
+        const action = isSaved ? 'unsaveHotel' : 'saveHotel';
+        const hotelName = !isSaved ? hotel.summary.name : undefined;
+        try {
+            const response = await axios.post(`https://gotel-frontend.vercel.app/${action}`, {
+                userId: user._id,
+                hotelId: id,
+                hotelName
+            });
+            setIsSaved(!isSaved);
+            updateSavedHotels(response.data);
+        } catch (error) {
+            console.error('Error toggling save:', error);
+        }
+    };
+    
+
+    const defaultCenter = {
+        lat: hotel?.summary?.location?.coordinates?.latitude, 
+        lng: hotel?.summary?.location?.coordinates?.longitude
+    }
+    
+
+    if (!hotel) {
+        return <p>Loading hotel details...</p>;
+    }
+
+    const { summary, propertyGallery, reviewInfo } = hotel;
+
     return (
         <div>
-            {/* Image Gallery Section */}
+        <div className="hotel-content">
             <div className="image-gallery">
                 <div className="main-image">
                     {propertyGallery?.images?.[0]?.image?.url && (
@@ -79,8 +118,20 @@ const Hotel = () => {
                     ))}
                 </div>
             </div>
+            <div className="map-container">
+                <LoadScript googleMapsApiKey="AIzaSyCx19ymBXj2YWJkocIIBiapQHQmzXzFnSQ">
+                    <GoogleMap
+                        mapContainerStyle={{ width: '400px', height: '300px' }}
+                        center={defaultCenter}
+                        zoom={15}
+                        onLoad={map => setMap(map)}
+                    >
+                        <Marker position={defaultCenter} />
+                    </GoogleMap>
+                </LoadScript>
+                </div>
+            </div>
 
-            {/* Navigation Bar */}
             <nav className="details-nav">
                 <ul>
                     <li><a href="#overview">Overview</a></li>
@@ -88,9 +139,11 @@ const Hotel = () => {
                 </ul>
             </nav>
 
-            {/* Overview Section */}
             <section id="overview">
                 <h1>{summary?.name}</h1>
+                <button onClick={toggleSave} style={{ fontSize: '24px', color: isSaved ? 'red' : 'grey' }}>
+                    {isSaved ? '♥' : '♡'}
+                </button>
                 <div className="rating">
                     {[1, 2, 3, 4, 5].map((star) => (
                         <span key={star} onClick={() => handleRating(star)} className={rating >= star ? 'filled' : ''}>☆</span>
@@ -113,11 +166,10 @@ const Hotel = () => {
                 </div>
             </section>
 
-            {/* Amenities Section */}
             <section id="amenities">
                 <h2>Popular amenities</h2>
                 <div className="amenities-container">
-                    {topAmenities?.map((amenity, index) => (
+                    {summary?.amenities?.topAmenities?.items.map((amenity, index) => (
                         <div key={index} className="amenity">
                             <p>{amenity?.text}</p>
                         </div>
@@ -129,3 +181,4 @@ const Hotel = () => {
 };
 
 export default Hotel;
+

@@ -2,17 +2,25 @@ const mongoose = require('mongoose');
 
 // Define the schema for individual reviews
 const reviewSchema = new mongoose.Schema({
-    hotelId: mongoose.Types.ObjectId, // ID of the hotel reviewed
-    rating: Number, // Rating given by the user
-    reviewText: String // Textual review provided by the user
-  });
+    hotelId: String,  // Store hotelId as a string
+    hotelName: String,
+    hotelImageURL: String,
+    rating: Number,
+    reviewText: String
+});
 
-  // Define the schema for the user
+
+const savedHotelSchema = new mongoose.Schema({
+    hotelId: String,
+    hotelName: String
+});
+
 const UserSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  password: String,
-  reviews: [reviewSchema], // Array of reviews given by the user
+    name: String,
+    email: { type: String, unique: true },
+    password: String,
+    reviews: [reviewSchema],
+    savedHotels: [savedHotelSchema] // Array of objects containing hotelId and hotelName
 });
 
 // Create models from the defined schemas

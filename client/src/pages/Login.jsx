@@ -13,7 +13,7 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3002/login', { email, password })
+        axios.post('https://gotel-frontend.vercel.app/login', { email, password })
             .then(response => {
                 const { message, user } = response.data; // Expecting object with message and user
                 if (user) {
