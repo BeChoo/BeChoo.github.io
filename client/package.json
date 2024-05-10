@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
-    "@welldone-software/why-did-you-render": "^8.0.1"
+    "@welldone-software/why-did-you-render": "^8.0.1",
+    "axios": "^1.6.8"
   }
 }
