@@ -56,7 +56,7 @@ const Hotel = () => {
             return;
         }
         try {
-            const { data } = await axios.post('http://localhost:3002/submitReview', {
+            const { data } = await axios.post('https://gotel-frontend.vercel.app/submitReview', {
                 userId: user._id,
                 hotelId: id,
                 hotelName: hotel.summary.name,
@@ -76,7 +76,7 @@ const Hotel = () => {
         const action = isSaved ? 'unsaveHotel' : 'saveHotel';
         const hotelName = !isSaved ? hotel.summary.name : undefined;
         try {
-            const response = await axios.post(`http://localhost:3002/${action}`, {
+            const response = await axios.post(`https://gotel-frontend.vercel.app/${action}`, {
                 userId: user._id,
                 hotelId: id,
                 hotelName

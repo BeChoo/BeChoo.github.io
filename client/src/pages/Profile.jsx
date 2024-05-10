@@ -11,7 +11,7 @@ const Profile = () => {
 
     useEffect(() => {
         if (user && user._id) {
-            axios.get(`http://localhost:3002/userReviews/${user._id}`)
+            axios.get(`https://gotel-frontend.vercel.app/userReviews/${user._id}`)
                 .then(response => {
                     setUserReviews(response.data);
                 })
