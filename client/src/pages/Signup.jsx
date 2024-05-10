@@ -12,7 +12,7 @@ function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('https://gotel-frontend.vercel.app/register', { name, email, password })
+        axios.post('https://gotel-api.vercel.app/register', { name, email, password })
             .then(result => {
                 console.log(result);
                 navigate('/login');
