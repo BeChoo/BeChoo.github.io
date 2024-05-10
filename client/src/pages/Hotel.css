@@ -1,9 +1,10 @@
 .image-gallery {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+  flex: 3; /* Gives more space to the image gallery compared to the map */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: -550px; /* Provides space between the gallery and the map */
+}
   
   .main-image img {
     width: 100%;    /* This will make the image responsive to the container size */
@@ -21,10 +22,10 @@
   }
   
   .thumbnail-image img {
-    width: 100px; /* Handles image size making it fixed */
+    width: 100px; /* Fixed size for thumbnails */
     height: 100px;
     object-fit: cover;
-  }
+}
   
   .details-nav ul {
     list-style: none;
@@ -104,3 +105,16 @@
     font-weight: bold;
   }
   
+  .hotel-content {
+    display: flex;
+    justify-content: space-between; /* Ensures children are spaced out evenly */
+    align-items: start; /* Aligns children at the top */
+    width: 100%; /* Full width to use all available space */
+}
+
+
+.map-container {
+  flex: 1; /* Less space relative to the image gallery */
+  padding-left: 20px; /* Space between map and image gallery */
+  margin-right: 15px;
+}
