@@ -6,7 +6,7 @@ const { UserModel, ReviewModel } = require('./models/User');
 const app = express();
 app.use(express.json());
 const corsOptions = {
-  origin: 'https://gotel-frontend.vercel.app', // Allows requests only from your frontend
+  origin: 'https://gotel-api.vercel.app', // Allows requests only from your frontend
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
