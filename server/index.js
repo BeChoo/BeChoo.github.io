@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require("cors");
@@ -13,12 +14,13 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://briancho:briancho@gotel.pkl54mr.mongodb.net/")
+console.log("MONGO_CONNECTION: ", process.env.MONGO_CONNECTION);
+mongoose.connect(process.env.MONGO_CONNECTION)
   .then(() => {
     console.log("MongoDB connected");
   })
-  .catch(() => {
-    console.log("Connection failed");
+  .catch((err) => {
+    console.error("Connection failed", err);
   });
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
