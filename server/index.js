@@ -13,13 +13,17 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-mongoose.connect("MONGO_KEY")
+mongoose.connect("mongodb+srv://briancho:briancho@gotel.pkl54mr.mongodb.net/")
   .then(() => {
     console.log("MongoDB connected");
   })
   .catch(() => {
     console.log("Connection failed");
   });
+
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
+app.listen(3000, () => console.log("Server ready on port 3000."));
 
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
@@ -120,7 +124,9 @@ app.get('/api/hotelDetails/:hotelId', async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 3002;
-app.listen(port, () => {
-  console.log(`Server is running`);
-});
+// const port = process.env.PORT || 3002;
+// app.listen(port, () => {
+//   console.log(`Server is running`);
+// });
+
+module.exports = app;
