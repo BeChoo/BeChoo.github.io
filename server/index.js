@@ -7,14 +7,13 @@ const { UserModel, ReviewModel } = require('./models/User');
 const app = express();
 const corsOptions = {
   origin: ["https://gotel-frontend-git-hosting-bechoos-projects.vercel.app"],
-  METHODS: ["POST", "GET"],
-  credentials: true,
+  // METHODS: ["POST", "GET"],
+  // credentials: true,
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 app.use(express.json());
 
-console.log("MONGO_CONNECTION: ", process.env.MONGO_CONNECTION);
 mongoose.connect(process.env.MONGO_CONNECTION)
   .then(() => {
     console.log("MongoDB connected");
