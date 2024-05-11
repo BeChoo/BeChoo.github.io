@@ -6,10 +6,11 @@ const { UserModel, ReviewModel } = require('./models/User');
 const app = express();
 app.use(express.json());
 const corsOptions = {
-  origin: 'https://gotel-api.vercel.app', // Allows requests only from your frontend
+  origin: 'https://gotel-frontend.vercel.app', // This should be your frontend URL
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
+
 
 mongoose.connect("mongodb+srv://chasecalero:chasecalero@gotel.pkl54mr.mongodb.net/Gotel?retryWrites=true&w=majority")
   .then(() => {

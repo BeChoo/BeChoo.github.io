@@ -83,7 +83,14 @@ export default function Home() {
             alert('Please select exactly two hotels to compare.');
         }
     };
-    
+
+
+    const handleHotelClick = (hotelId, checkIn, checkOut, guests) => {
+        // Store the data in local storage
+        localStorage.setItem('hotelParams', JSON.stringify({ checkIn, checkOut, adults: guests }));
+        // Open the new tab
+        window.open(`/hotel/${hotelId}`, '_blank');
+    }
     
 
     //Effect that sorts hotels based on price after rendering
@@ -230,9 +237,9 @@ export default function Home() {
                     </div>
                     <div className="hotel-details">
     <h3 className="hotel-name">
-        <a href={`/hotel/${hotel.id}`} target="_blank" rel="noopener noreferrer" style={{ color: 'black', textDecoration: 'none'}}>
-            {hotel.name}
-        </a>
+    <a href={`#`} onClick={() => handleHotelClick(hotel.id, checkIn, checkOut, guests)} style={{ color: 'black', textDecoration: 'none' }}>
+                                    {hotel.name}
+                                </a>
     </h3>
     <div className="hotel-rating-container">
         <p className="hotel-rating">
