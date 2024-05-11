@@ -13,15 +13,13 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-
-mongoose.connect(MONGO_KEY)
+mongoose.connect("MONGO_KEY")
   .then(() => {
     console.log("MongoDB connected");
   })
   .catch(() => {
     console.log("Connection failed");
   });
-
 
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
@@ -38,7 +36,6 @@ app.post("/login", (req, res) => {
       res.status(500).json({ error: "Error logging in", details: err.toString() });
     });
 });
-
 
 app.post('/register', (req, res) => {
   UserModel.create(req.body)
@@ -66,10 +63,6 @@ app.post('/submitReview', (req, res) => {
       res.status(500).json({ error: "Error submitting review", details: err });
     });
 });
-
-
-
-
 
 // Get reviews by a user
 app.get('/userReviews/:userId', (req, res) => {
@@ -103,8 +96,6 @@ app.post('/saveHotel', (req, res) => {
     .catch(err => res.status(500).json({ error: "Error saving hotel", details: err }));
 });
 
-
-
 app.post('/unsaveHotel', (req, res) => {
   const { userId, hotelId } = req.body;
   UserModel.findByIdAndUpdate(
@@ -115,7 +106,6 @@ app.post('/unsaveHotel', (req, res) => {
     .then(user => res.status(200).json(user.savedHotels))
     .catch(err => res.status(500).json({ error: "Error unsaving hotel", details: err }));
 });
-
 
 app.get('/api/hotelDetails/:hotelId', async (req, res) => {
   const { hotelId } = req.params;
@@ -129,7 +119,6 @@ app.get('/api/hotelDetails/:hotelId', async (req, res) => {
     res.status(404).json({ message: "Hotel details not found" });
   }
 });
-
 
 const port = process.env.PORT || 3002;
 app.listen(port, () => {
