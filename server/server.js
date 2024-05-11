@@ -21,18 +21,22 @@ mongoose.connect("mongodb+srv://chasecalero:chasecalero@gotel.pkl54mr.mongodb.ne
   });
 
 
-app.post("/login", (req, res) => {
+  app.post("/login", (req, res) => {
     const { email, password } = req.body;
     UserModel.findOne({ email: email })
     .then(user => {
         if (user && user.password === password) {
-            res.json({ message: "Success", user });  // Ensure 'user' includes '_id'
-        } else { 
+            res.json({ message: "Success", user });
+        } else {
             res.status(401).json({ message: "Invalid credentials" });
         }
     })
-    .catch(err => res.status(500).json({ error: "Error logging in", err }));
+    .catch(err => {
+        console.error("Login error:", err);
+        res.status(500).json({ error: "Error logging in", details: err.toString() });
+    });
 });
+
 
 app.post('/register', (req, res) => {
   UserModel.create(req.body)
