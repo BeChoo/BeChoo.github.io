@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useUser } from './UserContext'; // Ensure path to UserContext is correct
 import './Hotel.css'; // Ensure path to CSS is correct
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const Hotel = () => {
     const [hotel, setHotel] = useState(null);
@@ -10,6 +11,7 @@ const Hotel = () => {
     const [reviewText, setReviewText] = useState('');
     const [isSaved, setIsSaved] = useState(false);
     const { user, addReview, updateSavedHotels } = useUser();
+    const [map, setMap] = useState(null);
     const { id } = useParams();
 
     useEffect(() => {
@@ -28,7 +30,21 @@ const Hotel = () => {
         fetchHotelDetails();
     }, [id, user?.savedHotels]);  // Ensure dependency on user's saved hotels
     
-    
+    // useEffect to add a marker once hotel and map are loaded
+    useEffect(() => {
+        if (hotel && map) {
+            const position = new google.maps.LatLng(
+                hotel.summary.location.coordinates.latitude,
+                hotel.summary.location.coordinates.longitude
+            );
+
+            new google.maps.Marker({
+                position: position,
+                map: map,
+                title: hotel.summary.name
+            });
+        }
+    }, [hotel, map]); // Depend on hotel and map being loaded
     
     const handleRating = (star) => {
         setRating(star);
@@ -40,7 +56,7 @@ const Hotel = () => {
             return;
         }
         try {
-            const { data } = await axios.post('http://localhost:3002/submitReview', {
+            const { data } = await axios.post('https://gotel-api.vercel.app/submitReview', {
                 userId: user._id,
                 hotelId: id,
                 hotelName: hotel.summary.name,
@@ -60,7 +76,7 @@ const Hotel = () => {
         const action = isSaved ? 'unsaveHotel' : 'saveHotel';
         const hotelName = !isSaved ? hotel.summary.name : undefined;
         try {
-            const response = await axios.post(`http://localhost:3002/${action}`, {
+            const response = await axios.post(`https://gotel-api.vercel.app/${action}`, {
                 userId: user._id,
                 hotelId: id,
                 hotelName
@@ -72,9 +88,11 @@ const Hotel = () => {
         }
     };
     
-    
-    
-    
+
+    const defaultCenter = {
+        lat: hotel?.summary?.location?.coordinates?.latitude, 
+        lng: hotel?.summary?.location?.coordinates?.longitude
+    }
     
 
     if (!hotel) {
@@ -85,6 +103,7 @@ const Hotel = () => {
 
     return (
         <div>
+        <div className="hotel-content">
             <div className="image-gallery">
                 <div className="main-image">
                     {propertyGallery?.images?.[0]?.image?.url && (
@@ -97,6 +116,19 @@ const Hotel = () => {
                             <img src={image.image.url} alt={`Hotel Image ${index + 1}`} />
                         </div>
                     ))}
+                </div>
+            </div>
+            <div className="map-container">
+                <LoadScript googleMapsApiKey="AIzaSyCx19ymBXj2YWJkocIIBiapQHQmzXzFnSQ">
+                    <GoogleMap
+                        mapContainerStyle={{ width: '400px', height: '300px' }}
+                        center={defaultCenter}
+                        zoom={15}
+                        onLoad={map => setMap(map)}
+                    >
+                        <Marker position={defaultCenter} />
+                    </GoogleMap>
+                </LoadScript>
                 </div>
             </div>
 
@@ -149,3 +181,4 @@ const Hotel = () => {
 };
 
 export default Hotel;
+

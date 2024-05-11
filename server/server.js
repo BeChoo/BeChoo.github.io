@@ -5,7 +5,11 @@ const { UserModel, ReviewModel } = require('./models/User');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: 'https://gotel-api.vercel.app', // Allows requests only from your frontend
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 mongoose.connect("mongodb+srv://chasecalero:chasecalero@gotel.pkl54mr.mongodb.net/Gotel?retryWrites=true&w=majority")
   .then(() => {
@@ -120,7 +124,7 @@ app.get('/api/hotelDetails/:hotelId', async (req, res) => {
 });
 
 
-
-app.listen(3002, () => {
+const port = process.env.PORT || 3002;
+app.listen(port, () => {
   console.log(`Server is running`);
 });
