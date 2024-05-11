@@ -14,7 +14,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 
-mongoose.connect("mongodb+srv://chasecalero:chasecalero@gotel.pkl54mr.mongodb.net/Gotel?retryWrites=true&w=majority")
+mongoose.connect(MONGO_KEY)
   .then(() => {
     console.log("MongoDB connected");
   })
