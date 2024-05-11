@@ -5,7 +5,7 @@ const { UserModel, ReviewModel } = require('./models/User');
 
 const app = express();
 const corsOptions = {
-  origin: ['https://gotel-frontend.vercel.app'],
+  origin: ["https://gotel-frontend.vercel.app"],
   METHODS: ["POST", "GET"],
   credentials: true
   // optionsSuccessStatus: 200
