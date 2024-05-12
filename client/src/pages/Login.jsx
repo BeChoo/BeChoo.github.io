@@ -10,12 +10,11 @@ function Login() {
   const [message, setMessage] = useState(""); // Added to handle messages
   const navigate = useNavigate();
   const { login } = useUser();
-  //testing
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post(
-        "https://gotel-frontend-git-hosting-bechoos-projects.vercel.app/login",
+        "https://gotel-server-git-hosting-bechoos-projects.vercel.app/login",
         { email, password }
       )
       .then((response) => {
@@ -28,11 +27,12 @@ function Login() {
         }
       })
       .catch((error) => {
-        console.error(
-          "Login failed:",
-          error.response ? error.response.data.message : "No response"
-        );
-        setMessage("Failed to communicate with the server.");
+        const defaultErrorMsg = "Failed to communicate with the server.";
+        const serverMsg = error.response
+          ? error.response.data.message
+          : defaultErrorMsg;
+          console.error("Login failed: ", serverMsg);
+          setMessage(serverMsg)
       });
   };
 

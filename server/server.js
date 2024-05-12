@@ -116,7 +116,7 @@ app.get('/api/hotelDetails/:hotelId', async (req, res) => {
   const { hotelId } = req.params;
   console.log("Fetching details for hotel ID:", hotelId);
   try {
-    const response = await axios.get(`/api/hotelDetails?hotel_id=${hotelId}`);
+    const response = await axios.get(`https://gotel-frontend-git-hosting-bechoos-projects.vercel.app/hotelDetails?hotel_id=${hotelId}`);
     console.log("Hotel details fetched successfully:", response.data);
     res.json(response.data);
   } catch (error) {

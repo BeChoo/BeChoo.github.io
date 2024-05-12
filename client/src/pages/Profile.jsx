@@ -13,7 +13,7 @@ const Profile = () => {
     if (user && user._id) {
       axios
         .get(
-          `https://gotel-frontend-git-hosting-bechoos-projects.vercel.app/userReviews/${user._id}`
+          `https://gotel-server-git-hosting-bechoos-projects.vercel.app/${user._id}`
         )
         .then((response) => {
           setUserReviews(response.data);
@@ -31,20 +31,24 @@ const Profile = () => {
     try {
       const responses = await Promise.all(
         user.savedHotels.map((hotel) =>
-          axios.get(`/api/hotelDetails/${hotel.hotelId}`).catch((err) => {
-            console.error(
-              "Failed to fetch hotel details for hotelId:",
-              hotel.hotelId,
-              err
-            );
-            return {
-              data: {
-                id: hotel.hotelId,
-                name: hotel.hotelName,
-                details: "Details not available",
-              },
-            }; // Fallback data structure
-          })
+          axios
+            .get(
+              `https://gotel-server-git-hosting-bechoos-projects.vercel.app/${hotel.hotelId}`
+            )
+            .catch((err) => {
+              console.error(
+                "Failed to fetch hotel details for hotelId:",
+                hotel.hotelId,
+                err
+              );
+              return {
+                data: {
+                  id: hotel.hotelId,
+                  name: hotel.hotelName,
+                  details: "Details not available",
+                },
+              }; // Fallback data structure
+            })
         )
       );
       const validResponses = responses.filter((res) => res !== null);

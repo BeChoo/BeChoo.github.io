@@ -14,7 +14,7 @@ function Signup() {
     e.preventDefault();
     axios
       .post(
-        "https://gotel-frontend-git-hosting-bechoos-projects.vercel.app/register",
+        "https://gotel-server-git-hosting-bechoos-projects.vercel.app/register",
         { name, email, password }
       )
       .then((result) => {
