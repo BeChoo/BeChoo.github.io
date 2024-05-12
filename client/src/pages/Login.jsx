@@ -81,7 +81,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Hardcoded credentials
-    const email = "test@gmail.com";
+    const email = "chase@gmail.com";
     const password = "1234";
 
     axios
