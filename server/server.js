@@ -8,7 +8,7 @@ const { UserModel, ReviewModel } = require('./models/User');
 const bcrypt = require('bcrypt');
 
 const corsOptions = {
-  origin: 'https://gotel-frontend-git-main-bechoos-projects.vercel.app', // http://localhost:3000
+  origin: ['https://gotel-frontend.vercel.app', 'https://gotel-frontend-bechoos-projects.vercel.app', 'https://gotel-frontend-git-main-bechoos-projects.vercel.app'], // http://localhost:3000
   // METHODS: ["POST", "GET"],
   credentials: true,
   optionsSuccessStatus: 200
