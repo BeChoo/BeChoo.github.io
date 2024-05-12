@@ -8,7 +8,7 @@ const { UserModel, ReviewModel } = require('./models/User');
 const bcrypt = require('bcrypt');
 
 const corsOptions = {
-  origin: ['https://gotel-frontend-eight.vercel.app/', 'https://gotel-frontend-gotel.vercel.app/', 'https://gotel-frontend-git-main-gotel.vercel.app/'],
+  origin: ['https://gotel-frontend-eight.vercel.app', 'https://gotel-frontend-gotel.vercel.app', 'https://gotel-frontend-git-main-gotel.vercel.app'],
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
@@ -22,6 +22,8 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch((err) => {
     console.error("Connection failed", err);
   });
+
+app.options('*', cors());
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
