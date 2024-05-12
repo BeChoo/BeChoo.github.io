@@ -28,11 +28,69 @@ const fetchCityName = async (latitude, longitude) => {
         return null;
     }
 };
+const hotelsData = [
+    {
+        name: "Kawada Hotel",
+        image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/81641066.jpg?k=e2eaef3c1f3b8110cf1bca9eda230a1e47f7f17c1a2e3aaf3d9e059b29ae8b90&o=&hp=1",
+        rating: "★★★"
+    },
+    {
+        name: "Tudor Court Hotel",
+        image: "https://images.trvl-media.com/lodging/3000000/2550000/2542000/2541929/c761886d.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+        rating: "★★★"
+    },
+    {
+        name: "Global Luxury Suites Downtown Boston",
+        image: "https://images.trvl-media.com/lodging/23000000/22790000/22788600/22788576/eaf6c86d.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+        rating: "★★★★"
+    },
+    {
+        name: "H Hotel",
+        image: "https://images.trvl-media.com/lodging/16000000/15200000/15192700/15192681/0e323ec3.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+        rating: "★★★"
+    },
+    {
+        name: "The Delphi Hotel",
+        image: "https://images.trvl-media.com/lodging/1000000/890000/887000/886918/a7e9a64d.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+        rating: "★★★★"
+    }
+];
+
+
 
 const Home = () => {
     const [userLocation, setUserLocation] = useState(null);
     const [hotels, setHotels] = useState([]);
     const [visibleIndex, setVisibleIndex] = useState(0);
+    const [hotelOfTheDay, setHotelOfTheDay] = useState(null);
+
+
+    const isDifferentDay = (lastDate) => {
+        const today = new Date();
+        const lastUpdatedDate = new Date(lastDate);
+    
+        return lastUpdatedDate.getDate() !== today.getDate() ||
+               lastUpdatedDate.getMonth() !== today.getMonth() ||
+               lastUpdatedDate.getFullYear() !== today.getFullYear();
+    };
+
+    useEffect(() => {
+        const hotelData = localStorage.getItem('hotelOfTheDay');
+        const storedHotel = hotelData ? JSON.parse(hotelData) : null;
+    
+        // Check if the stored hotel should be updated
+        if (!storedHotel || isDifferentDay(storedHotel.lastUpdated)) {
+            const randomIndex = Math.floor(Math.random() * hotelsData.length);
+            const selectedHotel = {
+                ...hotelsData[randomIndex],
+                lastUpdated: new Date().toISOString()
+            };
+            localStorage.setItem('hotelOfTheDay', JSON.stringify(selectedHotel));
+            setHotelOfTheDay(selectedHotel);
+        } else {
+            setHotelOfTheDay(storedHotel);
+        }
+    }, []);
 
     const getLocation = () => {
         if (navigator.geolocation) {
@@ -95,10 +153,14 @@ const Home = () => {
             </div>
             <div style={{ textAlign: "center", marginTop: "50px" }}>
                 <h2>Hotel of the Day!</h2>
-                <h3>Kawada Hotel</h3>
-                <img src="https://example.com/kawada.jpg" alt="Kawada Hotel" style={{ width: "300px", height: "200px" }} />
-                <p style={{ fontSize: "12px", marginTop: "10px" }}>Based on your location and limited time offers</p>
-                <p style={{ fontSize: "20px", marginTop: "10px" }}>★★★</p>
+                {hotelOfTheDay && (
+                    <>
+                        <h3>{hotelOfTheDay.name}</h3>
+                        <img src={hotelOfTheDay.image} alt={hotelOfTheDay.name} style={{ width: "300px", height: "200px" }} />
+                        <p style={{ fontSize: "12px", marginTop: "10px" }}>Based on limited time offers and recent reviews</p>
+                        <p style={{ fontSize: "20px", marginTop: "10px" }}>{hotelOfTheDay.rating}</p>
+                    </>
+                )}
             </div>
             {hotels.length > 0 && (
                 <div>

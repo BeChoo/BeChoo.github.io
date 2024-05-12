@@ -18,6 +18,7 @@ const UserSchema = new mongoose.Schema({
     name: String,
     email: { type: String, unique: true },
     password: String,
+    profilePic: String,
     reviews: [reviewSchema],
     savedHotels: [savedHotelSchema] // Array of objects containing hotelId and hotelName
 });
