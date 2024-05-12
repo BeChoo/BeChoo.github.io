@@ -7,12 +7,12 @@ const axios = require('axios');
 const { UserModel, ReviewModel } = require('./models/User');
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // https://gotel-frontend-git-hosting-bechoos-projects.vercel.app
+  origin: 'https://gotel-frontend.vercel.app', // http://localhost:3000
   // METHODS: ["POST", "GET"],
   credentials: true,
   optionsSuccessStatus: 200
 };
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI)

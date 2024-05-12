@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useUser } from "./UserContext.js"; // Adjust the path to UserContext if necessary
 import "./signup.css"; // Assuming this is where you have general styles
+// backend link: https://gotel-api.vercel.app
+// local link: http://localhost:3002
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -13,7 +15,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3002/login", { email, password })
+      .post("https://gotel-api.vercel.app/login", { email, password })
       .then((response) => {
         const { message, user } = response.data; // Expecting object with message and user
         if (user) {
