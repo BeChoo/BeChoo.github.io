@@ -59,7 +59,7 @@ const Hotel = () => {
     }
     try {
       const { data } = await axios.post(
-        "https://gotel-server-git-hosting-bechoos-projects.vercel.app/submitReview",
+        "https://gotel-api.vercel.app/submitReview",
         {
           userId: user._id,
           hotelId: id,
@@ -82,7 +82,7 @@ const Hotel = () => {
     const hotelName = !isSaved ? hotel.summary.name : undefined;
     try {
       const response = await axios.post(
-        `https://gotel-server-git-hosting-bechoos-projects.vercel.app/${action}`,
+        `https://gotel-api.vercel.app/${action}`,
         {
           userId: user._id,
           hotelId: id,

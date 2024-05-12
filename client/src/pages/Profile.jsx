@@ -13,7 +13,7 @@ const Profile = () => {
     if (user && user._id) {
       axios
         .get(
-          `https://gotel-server-git-hosting-bechoos-projects.vercel.app/${user._id}`
+          `https://gotel-api.vercel.app/${user._id}`
         )
         .then((response) => {
           setUserReviews(response.data);
@@ -33,7 +33,7 @@ const Profile = () => {
         user.savedHotels.map((hotel) =>
           axios
             .get(
-              `https://gotel-server-git-hosting-bechoos-projects.vercel.app/${hotel.hotelId}`
+              `https://gotel-api.vercel.app/${hotel.hotelId}`
             )
             .catch((err) => {
               console.error(
