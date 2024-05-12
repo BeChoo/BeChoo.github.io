@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_CONNECTION)
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
-app.listen(3000, () => console.log("Server ready on port 3000."));
+// app.listen(3000, () => console.log("Server ready on port 3000."));
 
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
@@ -105,7 +105,7 @@ app.post('/unsaveHotel', (req, res) => {
   const { userId, hotelId } = req.body;
   UserModel.findByIdAndUpdate(
     userId,
-    { $pull: { savedHotels: { hotelId } } }, // Depending on your Mongoose version, you might need to adjust this query
+    { $pull: { savedHotels: { hotelId } } },
     { new: true }
   )
     .then(user => res.status(200).json(user.savedHotels))
