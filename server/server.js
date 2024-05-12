@@ -1,20 +1,21 @@
 require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
 const cors = require("cors");
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const axios = require('axios');
 const { UserModel, ReviewModel } = require('./models/User');
 
-const app = express();
 const corsOptions = {
-  origin: ["https://gotel-frontend-git-hosting-bechoos-projects.vercel.app"],
+  origin: 'https://gotel-frontend-git-hosting-bechoos-projects.vercel.app',
   // METHODS: ["POST", "GET"],
-  // credentials: true,
+  credentials: true,
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_CONNECTION)
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("MongoDB connected");
   })
