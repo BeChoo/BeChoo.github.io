@@ -8,7 +8,7 @@ const { UserModel, ReviewModel } = require('./models/User');
 const bcrypt = require('bcrypt');
 
 const corsOptions = {
-  origin: ['https://gotel-frontend.vercel.app', 'https://gotel-frontend-bechoos-projects.vercel.app', 'https://gotel-frontend-git-main-bechoos-projects.vercel.app'],
+  origin: ['https://gotel-frontend-eight.vercel.app/', 'https://gotel-frontend-gotel.vercel.app/', 'https://gotel-frontend-git-main-gotel.vercel.app/'],
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
@@ -128,7 +128,7 @@ app.get('/api/hotelDetails/:hotelId', async (req, res) => {
   const { hotelId } = req.params;
   console.log("Fetching details for hotel ID:", hotelId);
   try {
-    const response = await axios.get(`https://gotel-frontend-git-main-bechoos-projects.vercel.app/hotelDetails?hotel_id=${hotelId}`);
+    const response = await axios.get(`https://gotel-frontend-eight.vercel.app/hotelDetails?hotel_id=${hotelId}`);
     console.log("Hotel details fetched successfully:", response.data);
     res.json(response.data);
   } catch (error) {

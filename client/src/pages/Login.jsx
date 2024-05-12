@@ -85,7 +85,7 @@ function Login() {
     const password = "1234";
 
     axios
-      .post("https://gotel-frontend-bechoos-projects.vercel.app/login", {
+      .post("https://gotel-backend.vercel.app/login", {
         email,
         password,
       })
