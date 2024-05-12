@@ -12,8 +12,8 @@ export default function Home() {
     const [guests, setGuests] = useState(null);
     const [hotels, setHotels] = useState(null);
     const [sortedHotels, setSortedHotels] = useState(null);
-    const [sortByPrice, setSortByPrice] = useState(null); 
-    const [sortByScore, setSortByScore] = useState(null); 
+    const [sortByPrice, setSortByPrice] = useState(null);
+    const [sortByScore, setSortByScore] = useState(null);
     const [selectedHotels, setSelectedHotels] = useState([]);
     const navigate = useNavigate();
 
@@ -41,7 +41,7 @@ export default function Home() {
     //Function to fetch city data
     const getCity = async () => {
         try {
-            const res = await axios.get('/api/city/', {
+            const res = await axios.get('https://gotel-api-gotel.vercel.app/api/city/', {
                 params: { searchCity }
             });
             const { data } = res;
@@ -54,7 +54,7 @@ export default function Home() {
     //Function to fetch hotel data
     const getHotels = async () => {
         try {
-            const res = await axios.get('/api/hotels/', {
+            const res = await axios.get('https://gotel-api-gotel.vercel.app/api/hotels/', {
                 params: { city, checkIn, checkOut, guests }
             });
             const { data } = res;
@@ -84,14 +84,12 @@ export default function Home() {
         }
     };
 
-
     const handleHotelClick = (hotelId, checkIn, checkOut, guests) => {
         // Store the data in local storage
         localStorage.setItem('hotelParams', JSON.stringify({ checkIn, checkOut, adults: guests }));
         // Open the new tab
         window.open(`/hotel/${hotelId}`, '_blank');
     }
-    
 
     //Effect that sorts hotels based on price after rendering
     useEffect(() => {
@@ -139,7 +137,7 @@ export default function Home() {
                 <span className="text-active">Gotel</span>
             </h1>
             <h2 className="subtitle">
-                
+
             </h2>
             <div className="search-container">
                 <input
@@ -163,111 +161,111 @@ export default function Home() {
             {/* Handles the check in, check out, and user input requests */}
             {city && (
                 <div className="date-container"> {/* New container for date and guests input */}
-                <input
-                    type="date"
-                    className="date-input" 
-                    onChange={e => setCheckIn(e.target.value)}
-                />
-                <input
-                    type="date"
-                    className="date-input" 
-                    onChange={e => setCheckOut(e.target.value)}
-                />
-                <input
-                    type="number"
-                    className="guests-input" 
-                    placeholder="Total guests"
-                    onChange={e => setGuests(e.target.value)}
-                />
-                <button
-                    className="find-hotels-button" 
-                    onClick={() => getHotels()}
-                >
-                    Find Hotels
-                </button>
-            </div>
+                    <input
+                        type="date"
+                        className="date-input"
+                        onChange={e => setCheckIn(e.target.value)}
+                    />
+                    <input
+                        type="date"
+                        className="date-input"
+                        onChange={e => setCheckOut(e.target.value)}
+                    />
+                    <input
+                        type="number"
+                        className="guests-input"
+                        placeholder="Total guests"
+                        onChange={e => setGuests(e.target.value)}
+                    />
+                    <button
+                        className="find-hotels-button"
+                        onClick={() => getHotels()}
+                    >
+                        Find Hotels
+                    </button>
+                </div>
             )}
-{sortedHotels && (
-    <div className="hotel-container mt-6">
-            <div className="flex items-center">
-            <h3 className="text-secondary text-lg mr-4">Sort by:</h3>
-            <button
-                className={`sort-button px-4 py-2 rounded-md mr-4 ${sortByPrice === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-                onClick={() => setSortByPrice(prevState => prevState === 'asc' ? null : 'asc')}
-            >
-                Price Low to High
-            </button>
-            <button
-                className={`sort-button px-4 py-2 rounded-md ${sortByPrice === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-                onClick={() => setSortByPrice(prevState => prevState === 'desc' ? null : 'desc')}
-            >
-                Price High to Low
-            </button>
-        </div>
-        <div className="flex items-center mt-4">
-            <h3 className="text-secondary text-lg mr-4">Sort by:</h3>
-            <button
-                className={`sort-button px-4 py-2 rounded-md mr-4 ${sortByScore === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-                onClick={() => setSortByScore(prevState => prevState === 'asc' ? null : 'asc')}
-            >
-                Highest Rating
-            </button>
-            <button
-                className={`sort-button px-4 py-2 rounded-md ${sortByScore === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-                onClick={() => setSortByScore(prevState => prevState === 'desc' ? null : 'desc')}
-            >
-                Lowest Rating
-            </button>
-        </div>
-        {sortedHotels.map(hotel => (
-            <div key={hotel.id} className="hotel-item">
-                 <input
+            {sortedHotels && (
+                <div className="hotel-container mt-6">
+                    <div className="flex items-center">
+                        <h3 className="text-secondary text-lg mr-4">Sort by:</h3>
+                        <button
+                            className={`sort-button px-4 py-2 rounded-md mr-4 ${sortByPrice === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+                            onClick={() => setSortByPrice(prevState => prevState === 'asc' ? null : 'asc')}
+                        >
+                            Price Low to High
+                        </button>
+                        <button
+                            className={`sort-button px-4 py-2 rounded-md ${sortByPrice === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+                            onClick={() => setSortByPrice(prevState => prevState === 'desc' ? null : 'desc')}
+                        >
+                            Price High to Low
+                        </button>
+                    </div>
+                    <div className="flex items-center mt-4">
+                        <h3 className="text-secondary text-lg mr-4">Sort by:</h3>
+                        <button
+                            className={`sort-button px-4 py-2 rounded-md mr-4 ${sortByScore === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+                            onClick={() => setSortByScore(prevState => prevState === 'asc' ? null : 'asc')}
+                        >
+                            Highest Rating
+                        </button>
+                        <button
+                            className={`sort-button px-4 py-2 rounded-md ${sortByScore === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+                            onClick={() => setSortByScore(prevState => prevState === 'desc' ? null : 'desc')}
+                        >
+                            Lowest Rating
+                        </button>
+                    </div>
+                    {sortedHotels.map(hotel => (
+                        <div key={hotel.id} className="hotel-item">
+                            <input
                                 type="checkbox"
                                 checked={selectedHotels.includes(hotel.id)}
                                 onChange={() => handleSelectHotel(hotel.id)}
                                 disabled={selectedHotels.length >= 2 && !selectedHotels.includes(hotel.id)}
                             />
-                <div className="hotel-info-container">
-                    <div className="hotel-image-container">
-                        <img
-                            src={hotel.propertyImage.image.url}
-                            alt={hotel.name}
-                            className="hotel-image"
-                        />
-                    </div>
-                    <div className="hotel-details">
-    <h3 className="hotel-name">
-    <a href={`#`} onClick={() => handleHotelClick(hotel.id, checkIn, checkOut, guests)} style={{ color: 'black', textDecoration: 'none' }}>
-                                    {hotel.name}
-                                </a>
-    </h3>
-    <div className="hotel-rating-container">
-        <p className="hotel-rating">
-            {hotel.reviews?.score || 'N/A'}
-        </p>
-        <p className="hotel-description" data-rating={getRatingDescription(hotel.reviews?.score)}>
-            {/* Description will be added dynamically based on rating */}
-        </p>
-    </div>
-    <p className="hotel-price">
-        {hotel.price.options[0]?.formattedDisplayPrice}
-    </p>
-    <p className="hotel-discount">
-        {hotel.offerBadge?.secondary?.text}
-    </p>
-</div>
+                            <div className="hotel-info-container">
+                                <div className="hotel-image-container">
+                                    <img
+                                        src={hotel.propertyImage.image.url}
+                                        alt={hotel.name}
+                                        className="hotel-image"
+                                    />
+                                </div>
+                                <div className="hotel-details">
+                                    <h3 className="hotel-name">
+                                        <a href={`#`} onClick={() => handleHotelClick(hotel.id, checkIn, checkOut, guests)} style={{ color: 'black', textDecoration: 'none' }}>
+                                            {hotel.name}
+                                        </a>
+                                    </h3>
+                                    <div className="hotel-rating-container">
+                                        <p className="hotel-rating">
+                                            {hotel.reviews?.score || 'N/A'}
+                                        </p>
+                                        <p className="hotel-description" data-rating={getRatingDescription(hotel.reviews?.score)}>
+                                            {/* Description will be added dynamically based on rating */}
+                                        </p>
+                                    </div>
+                                    <p className="hotel-price">
+                                        {hotel.price.options[0]?.formattedDisplayPrice}
+                                    </p>
+                                    <p className="hotel-discount">
+                                        {hotel.offerBadge?.secondary?.text}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    {selectedHotels.length === 2 && (
+                        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100%', padding: '10px', backgroundColor: 'rgba(0, 0, 0, 0.5)', textAlign: 'center', boxShadow: '0px -2px 10px rgba(0,0,0,0.1)' }}>
+                            <button onClick={handleCompareHotels} style={{ padding: '10px 20px', fontSize: '16px', color: 'white', backgroundColor: '#007bff', border: 'none', borderRadius: '5px' }}>
+                                Compare Selected Hotels
+                            </button>
+                        </div>
+                    )}
                 </div>
-            </div>
-        ))}
-{selectedHotels.length === 2 && (
-    <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100%', padding: '10px', backgroundColor: 'rgba(0, 0, 0, 0.5)', textAlign: 'center', boxShadow: '0px -2px 10px rgba(0,0,0,0.1)' }}>
-        <button onClick={handleCompareHotels} style={{ padding: '10px 20px', fontSize: '16px', color: 'white', backgroundColor: '#007bff', border: 'none', borderRadius: '5px' }}>
-            Compare Selected Hotels
-        </button>
-    </div>
-)}
+            )}
         </div>
-        )}
-    </div>
     );
 }
