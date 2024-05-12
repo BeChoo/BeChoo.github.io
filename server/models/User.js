@@ -9,7 +9,6 @@ const reviewSchema = new mongoose.Schema({
     reviewText: String
 });
 
-
 const savedHotelSchema = new mongoose.Schema({
     hotelId: String,
     hotelName: String

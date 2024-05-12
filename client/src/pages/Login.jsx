@@ -13,10 +13,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(
-        "https://gotel-server-git-hosting-bechoos-projects.vercel.app/login",
-        { email, password }
-      )
+      .post("http://localhost:3002/login", { email, password })
       .then((response) => {
         const { message, user } = response.data; // Expecting object with message and user
         if (user) {
@@ -31,8 +28,8 @@ function Login() {
         const serverMsg = error.response
           ? error.response.data.message
           : defaultErrorMsg;
-          console.error("Login failed: ", serverMsg);
-          setMessage(serverMsg)
+        console.error("Login failed: ", serverMsg);
+        setMessage(serverMsg);
       });
   };
 

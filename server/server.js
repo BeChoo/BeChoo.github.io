@@ -7,12 +7,12 @@ const axios = require('axios');
 const { UserModel, ReviewModel } = require('./models/User');
 
 const corsOptions = {
-  origin: 'https://gotel-frontend-git-hosting-bechoos-projects.vercel.app',
+  origin: 'http://localhost:3000', // https://gotel-frontend-git-hosting-bechoos-projects.vercel.app
   // METHODS: ["POST", "GET"],
   credentials: true,
   optionsSuccessStatus: 200
 };
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -24,8 +24,6 @@ mongoose.connect(process.env.MONGODB_URI)
   });
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
-
-// app.listen(3000, () => console.log("Server ready on port 3000."));
 
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
@@ -126,9 +124,10 @@ app.get('/api/hotelDetails/:hotelId', async (req, res) => {
   }
 });
 
+// Comment out when pushing to prod
 // const port = process.env.PORT || 3002;
 // app.listen(port, () => {
-//   console.log(`Server is running`);
+//   console.log(`Server is running on port ${port}`);
 // });
 
 module.exports = app;
