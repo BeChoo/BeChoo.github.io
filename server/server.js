@@ -139,6 +139,23 @@ app.get('/api/hotelDetails/:hotelId', async (req, res) => {
   }
 });
 
+//Function to fetch city data
+app.get('/api/city/', async (req, res) => {
+  const searchCity = req.query.searchCity; // Assuming searchCity is passed as a query parameter
+  try {
+    const response = await axios.get(`${API_BASE_URL}/city`, { params: { searchCity } });
+    const data = response.data;
+    if (data && data.length > 0 && data[0].gaiaId) {
+      res.json({ gaiaId: data[0].gaiaId }); // Respond with the city ID
+    } else {
+      res.status(404).json({ error: 'City not found' });
+    }
+  } catch (error) {
+    console.error("Failed to fetch city data:", error);
+    res.status(500).json({ error: "Failed to fetch city data" });
+  }
+});
+
 // Comment out when pushing to prod
 // const port = process.env.PORT || 3002;
 // app.listen(port, () => {
