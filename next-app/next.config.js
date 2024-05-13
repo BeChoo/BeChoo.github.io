@@ -3,7 +3,7 @@ module.exports = {
         return [
             {
                 // matching all API routes
-                source: '/api/*',
+                source: '/api/:path*',
                 // ["/api/city", "/api/hotelDetails", "/api/hotelOffers", "/api/hotels"],
                 headers: [
                     { key: "Access-Control-Allow-Credentials", value: "true" },
