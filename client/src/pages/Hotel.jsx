@@ -91,7 +91,7 @@ const fetchHotelOffers = async (hotelId, checkInDate, checkOutDate, adultsNumber
             return;
         }
         try {
-            const { data } = await axios.post('http://localhost:3002/submitReview', {
+            const { data } = await axios.post('https://gotel-backend.vercel.app/submitReview', {
                 userId: user._id,
                 hotelId: id,
                 hotelName: hotel.summary.name,
@@ -110,7 +110,7 @@ const fetchHotelOffers = async (hotelId, checkInDate, checkOutDate, adultsNumber
         const action = isSaved ? 'unsaveHotel' : 'saveHotel';
         const hotelName = !isSaved ? hotel.summary.name : undefined;
         try {
-            const response = await axios.post(`http://localhost:3002/${action}`, {
+            const response = await axios.post(`https://gotel-api.vercel.app/${action}`, {
                 userId: user._id,
                 hotelId: id,
                 hotelName

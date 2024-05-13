@@ -13,7 +13,7 @@ const Profile = () => {
 
     useEffect(() => {
         if (user && user._id) {
-            axios.get(`http://localhost:3002/userReviews/${user._id}`)
+            axios.get(`https://gotel-api.vercel.app/userReviews/${user._id}`)
                 .then(response => {
                     setUserReviews(response.data);
                 })
@@ -42,7 +42,7 @@ const Profile = () => {
     };
 
     const updateProfilePicture = () => {
-        axios.post(`http://localhost:3002/updateProfilePic`, { userId: user._id, profilePic: newProfilePic })
+        axios.post(`https://gotel-api.vercel.app/updateProfilePic`, { userId: user._id, profilePic: newProfilePic })
             .then(response => {
                 alert('Profile picture updated successfully.');
                 // Here you should update the user context or re-fetch the user data
