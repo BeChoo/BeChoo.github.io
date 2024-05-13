@@ -133,6 +133,43 @@ export default function Home() {
         }
     }, [hotels, sortByScore, sortByPrice]);
 
+    const toggleSortByPrice = (order) => {
+        if (sortByPrice === order) {
+            setSortByPrice(null); // If already active, deactivate
+            setSortedHotels(hotels); // Return to original order
+        } else {
+            setSortByPrice(order); // Activate this sort option
+            setSortByScore(null); // Ensure no sort by score is active
+            // Implement the sorting
+            const sorted = [...hotels];
+            sorted.sort((a, b) => {
+                const priceA = parseFloat(a.price.options[0]?.formattedDisplayPrice.replace(/[$,]/g, ''));
+                const priceB = parseFloat(b.price.options[0]?.formattedDisplayPrice.replace(/[$,]/g, ''));
+                return order === 'asc' ? priceA - priceB : priceB - priceA;
+            });
+            setSortedHotels(sorted);
+        }
+    };
+    
+    const toggleSortByScore = (order) => {
+        if (sortByScore === order) {
+            setSortByScore(null); // If already active, deactivate
+            setSortedHotels(hotels); // Return to original order
+        } else {
+            setSortByScore(order); // Activate this sort option
+            setSortByPrice(null); // Ensure no sort by price is active
+            // Implement the sorting
+            const sorted = [...hotels];
+            sorted.sort((a, b) => {
+                const scoreA = parseFloat(a.reviews?.score);
+                const scoreB = parseFloat(b.reviews?.score);
+                return order === 'asc' ? scoreB - scoreA : scoreA - scoreB;
+            });
+            setSortedHotels(sorted);
+        }
+    };
+    
+
     return (
         <div className="container">
             <h1 className="title">
@@ -192,32 +229,30 @@ export default function Home() {
             <div className="flex items-center">
             <h3 className="text-secondary text-lg mr-4">Sort by:</h3>
             <button
-                className={`sort-button px-4 py-2 rounded-md mr-4 ${sortByPrice === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-                onClick={() => setSortByPrice(prevState => prevState === 'asc' ? null : 'asc')}
-            >
-                Price Low to High
-            </button>
-            <button
-                className={`sort-button px-4 py-2 rounded-md ${sortByPrice === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-                onClick={() => setSortByPrice(prevState => prevState === 'desc' ? null : 'desc')}
-            >
-                Price High to Low
-            </button>
-        </div>
-        <div className="flex items-center mt-4">
-            <h3 className="text-secondary text-lg mr-4">Sort by:</h3>
-            <button
-                className={`sort-button px-4 py-2 rounded-md mr-4 ${sortByScore === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-                onClick={() => setSortByScore(prevState => prevState === 'asc' ? null : 'asc')}
-            >
-                Highest Rating
-            </button>
-            <button
-                className={`sort-button px-4 py-2 rounded-md ${sortByScore === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-                onClick={() => setSortByScore(prevState => prevState === 'desc' ? null : 'desc')}
-            >
-                Lowest Rating
-            </button>
+    className={`sort-button ${sortByPrice === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+    onClick={() => toggleSortByPrice('asc')}
+>
+    Price Low to High
+</button>
+<button
+    className={`sort-button ${sortByPrice === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+    onClick={() => toggleSortByPrice('desc')}
+>
+    Price High to Low
+</button>
+<button
+    className={`sort-button ${sortByScore === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+    onClick={() => toggleSortByScore('asc')}
+>
+    Highest Rating
+</button>
+<button
+    className={`sort-button ${sortByScore === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+    onClick={() => toggleSortByScore('desc')}
+>
+    Lowest Rating
+</button>
+
         </div>
         {sortedHotels.map(hotel => (
             <div key={hotel.id} className="hotel-item">
