@@ -52,9 +52,8 @@ export default function Home() {
     // Function to fetch hotel data
     const getHotels = async () => {
         try {
-            const res = await axios.get(`https://gotel-api-gotel.vercel.app/api/hotels/?city=2734&checkIn=2024-05-16&checkOut=2024-05-24&guests=1`); // https://gotel-api-gotel.vercel.app/api/hotels/?city=${city}&checkIn=${checkIn}&checkOut=${checkOut}&guests=${guests}
+            const res = await axios.get(`http://gotel-api-gotel.vercel.app/api/hotels/?city=2734&checkIn=2024-05-16&checkOut=2024-05-24&guests=1`); // https://gotel-api-gotel.vercel.app/api/hotels/?city=${city}&checkIn=${checkIn}&checkOut=${checkOut}&guests=${guests}
             const { data } = res;
-            console.log(data);
             setHotels(data.properties); //Set the fetched hotel data using API get request
         } catch (error) {
             console.log(error);
@@ -184,8 +183,7 @@ export default function Home() {
                 <div className="button-container">
                     <button
                         className="search-button"
-                        onClick={() => {getCity() 
-                            getHotels()}} // Call getCity() when clicked
+                        onClick={() => getCity()} // Call getCity() when clicked
                     >
                         Search
                     </button>
