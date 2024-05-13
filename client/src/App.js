@@ -17,8 +17,6 @@ import { UserProvider } from './pages/UserContext.js';
 import Profile from './pages/Profile';
 import CompareHotels from './pages/CompareHotels.js';
 
-
-
 function App() {
     return (
         <UserProvider>
