@@ -1,4 +1,8 @@
-import axios from 'axios';
+import axios from 'axios';import Cors from 'cors';
+
+const cors = Cors({
+  methods: ['GET', 'HEAD'],
+});
 
 export default async function handler(req, res) {
     const { hotelId, checkIn, checkOut, adults } = req.query;

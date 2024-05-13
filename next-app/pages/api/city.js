@@ -1,4 +1,10 @@
 import axios from "axios";
+import Cors from 'cors';
+
+const cors = Cors({
+  methods: ['GET', 'HEAD'],
+});
+
 //Function responsible for handling requests coming from API
 export default async function handler(req, res) {
   //RapidAPI endpoint configurations that hold all standard input options for gathering the region data
