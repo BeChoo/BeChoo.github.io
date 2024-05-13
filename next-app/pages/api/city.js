@@ -3,7 +3,8 @@ import Cors from 'cors';
 
 const cors = Cors({
   methods: ['GET', 'HEAD', 'POST', 'OPTIONS'],
-  origin: ['https://gotel-frontend-eight.vercel.app', 'https://gotel-frontend-gotel.vercel.app', 'https://gotel-frontend-git-main-gotel.vercel.app']
+  origin: ['https://gotel-frontend-eight.vercel.app', 'https://gotel-frontend-gotel.vercel.app', 'https://gotel-frontend-git-main-gotel.vercel.app'],
+  optionsSuccessStatus: 200
 });
 
 // //Function responsible for handling requests coming from API
@@ -76,5 +77,4 @@ export default async function handler(req, res) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-  res.json({ data: "This is data from the /api/city endpoint." });
 }

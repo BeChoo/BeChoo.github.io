@@ -3,6 +3,18 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './homepage.css';
 
+const getCity = async (searchCity) => {
+    try {
+        const res = await axios.get('https://gotel-api-gotel.vercel.app/api/city', {
+            params: { searchCity }
+        });
+        const { data } = res;
+        setCity(data.data[0].gaiaId); //Set the city ID using API get request
+    } catch (error) {
+        console.error('Error searching city: ', error);
+    }
+};
+
 export default function Home() {
     //State variables that manage the information used in this page
     const [searchCity, setSearchCity] = useState(null); //manages the input value for the destination input entered by the user
@@ -39,19 +51,26 @@ export default function Home() {
     };
 
     //Function to fetch city data
-    const getCity = async () => {
-        try {
-            const res = await axios.get('https://gotel-api-gotel.vercel.app/api/city', {
-                params: { searchCity }
-            });
-            const { data } = res;
-            setCity(data.data[0].gaiaId); //Set the city ID using API get request
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // const getCity = async () => {
+    //     try {
+    //         const res = await axios.get('https://gotel-api-gotel.vercel.app/api/city', {
+    //             params: { searchCity }
+    //         });
+    //         const { data } = res;
+    //         setCity(data.data[0].gaiaId); //Set the city ID using API get request
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
-    //Function to fetch hotel data
+    // Testing
+    useEffect(() => {
+        if (searchCity) {
+            getCity(searchCity);
+        }
+    }, [searchCity]);
+
+    // Function to fetch hotel data
     const getHotels = async () => {
         try {
             const res = await axios.get('https://gotel-api-gotel.vercel.app/api/hotels/', {
@@ -166,7 +185,6 @@ export default function Home() {
             setSortedHotels(sorted);
         }
     };
-
 
     return (
         <div className="container">
