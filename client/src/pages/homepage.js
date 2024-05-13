@@ -43,19 +43,13 @@ export default function Home() {
         try {
             const res = await axios.get(`https://gotel-api-gotel.vercel.app/api/city?searchCity=${searchCity}`);
             const { data } = res;
-            console.log(res);
+            console.log('res', res);
+            console.log('searchCIty', searchCity);
             setCity(data.data[0].gaiaId); //Set the city ID using API get request
         } catch (error) {
             console.log(error);
         }
     };
-
-    // Testing
-    useEffect(() => {
-        if (searchCity) {
-            getCity(searchCity);
-        }
-    }, [searchCity]);
 
     // Function to fetch hotel data
     const getHotels = async () => {
@@ -186,10 +180,10 @@ export default function Home() {
                     type="text"
                     className="search-input"
                     placeholder="Enter your destination city"
-                    onChange={e => {
-                        setCity(null);
+                    onSubmit={e => {
                         setSearchCity(e.target.value);
                     }}
+
                 />
                 <div className="button-container">
                     <button
