@@ -99,17 +99,32 @@
     justify-content: center; /* Center the sorting container */
 }
 
-/* Sorting Buttons */
+.bg-primary {
+    background-color: #6c757d; /* Your primary color */
+}
+
+.bg-active {
+    background-color: #007bff; /* Active state color, such as blue */
+}
+
 .sort-button {
-    background-color: #6c757d;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin-right: 10px; /* Add margin to the right */
-    margin-bottom: 10px; /* Add margin to the bottom */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.sort-button.text-active {
+    color: #000; /* Inactive text color if needed */
+}
+
+.sort-button:hover {
+    background-color: #0056b3; /* Darker blue on hover for better UI feedback */
 }
 
 /* Hotel Container */
@@ -122,9 +137,14 @@
 /* Hotel Item */
 .hotel-item {
     margin-bottom: 20px;
-
-    border-radius: 30px;
-    overflow: hidden; /* Ensure the border-radius is applied properly */
+    height: 330px; /* Fixed height */
+    width: 1200px; /* Full width of the container */
+    border-radius: 10px;
+    overflow: hidden; /* Hide overflow, or use 'auto' to enable scrolling */
+    display: flex;
+    flex-direction: row; /* Aligns child elements horizontally */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds shadow for better visibility */
+    background-color: #fff; /* Background color */
 }
 
 /* Hotel Info Container */
@@ -156,6 +176,9 @@
 .hotel-details {
     padding: 20px; /* Add padding to the details container */
     flex-grow: 1; /* Allow the details container to grow and fill the remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #fff; /* Background color for the details container */
 }
 
@@ -226,12 +249,12 @@
 
 /* Hotel Price */
 .hotel-price {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: bold;
     color: #007bff;
     position: relative;
-    bottom: -30px;
-    right: -650px;
+    bottom: -50px;
+    right: -690px;
     padding: 10px; /* Add padding for spacing */
 }
 
@@ -240,7 +263,7 @@
     font-weight: bold;
     color: #000000;
     position: relative;
-    bottom: 70px;
+    bottom: 80px;
     right: -570px;
     padding: 10px; /* Add padding for spacing */
     margin-right: -150px;
