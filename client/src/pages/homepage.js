@@ -183,7 +183,12 @@ export default function Home() {
                 <div className="button-container">
                     <button
                         className="search-button"
-                        onClick={() => getCity()} // Call getCity() when clicked
+                        onClick={() => {
+                            getCity() 
+                            console.log('----')
+                            getHotels()
+                            console.log('----')
+                        }} // Call getCity() when clicked
                     >
                         Search
                     </button>
