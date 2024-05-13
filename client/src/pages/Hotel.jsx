@@ -138,6 +138,42 @@ const fetchHotelOffers = async (hotelId, checkInDate, checkOutDate, adultsNumber
     const propertyAmenities = hotel.summary.amenities.amenities.find(amenity => amenity.title === "Property amenities");
     const roomServiceAmenity = propertyAmenities?.contents.find(content => content.icon.id === "room_service");
 
+    const renderRoomDetails = (listing) => {
+        if (!listing || !listing.primarySelections || !listing.primarySelections[0]) {
+            console.log('Incomplete listing data:', listing);
+            return 'No data available for this listing.';
+        }
+    
+        const primarySelection = listing.primarySelections[0];
+        const unitGallery = primarySelection.propertyUnit?.unitGallery;
+        const gallery = unitGallery?.gallery;
+        const image = gallery && gallery.length > 0 ? gallery[0].image.url : 'default-image-url';
+        const header = listing.header?.text || 'No title available';
+        const features = primarySelection.propertyUnit?.features?.slice(0, 4).map((feature, idx) => feature?.text) || ['No feature info'];
+        const specialOffer = listing.highlightedMessages && listing.highlightedMessages.length > 0 ? listing.highlightedMessages[0].trigger.value : 'No special offers';
+        const ratePlan = primarySelection.propertyUnit?.ratePlans && primarySelection.propertyUnit.ratePlans.length > 0 ? primarySelection.propertyUnit.ratePlans[0] : null;
+        const priceDetails = ratePlan?.priceDetails[0]?.price?.displayMessages;
+        const priceFormatted = priceDetails && priceDetails.length > 0 ? priceDetails[0].lineItems[0].price.formatted : 'No pricing available';
+        const totalPrice = priceDetails && priceDetails.length > 1 ? priceDetails[1].lineItems[0].value : 'N/A';
+        const priceDetailText = priceDetails && priceDetails.length > 2 ? priceDetails[2].lineItems[0].value : 'N/A';
+    
+        return (
+            <div className="room-container" style={{ backgroundColor: 'white', padding: '20px', margin: '10px 0' }}>
+                <img src={image} alt="Room Image" style={{ width: '100%' }} />
+                <h3>{header}</h3>
+                <ul>
+                    {features.map((featureText, idx) => <li key={idx}>{featureText}</li>)}
+                </ul>
+                <p style={{ color: 'green', fontWeight: 'bold' }}>{specialOffer}</p>
+                <hr style={{ borderColor: 'grey' }} />
+                <p style={{ fontWeight: 'bold' }}>{priceFormatted}</p>
+                <p>{totalPrice}</p>
+                <p>Price details: {priceDetailText}</p>
+            </div>
+        );
+    };
+
+    console.log('Offers Data:', offers);
     return (
         <div className="hotel-container">
             <div className="hotel-content">
@@ -231,44 +267,16 @@ const fetchHotelOffers = async (hotelId, checkInDate, checkOutDate, adultsNumber
                 </div>
             </section>
             <section id="pricing">
-    <h2>Hotel Prices</h2>
-    <div style={{ display: 'flex', justifyContent: 'space-around', margin: '20px 0' }}>
-        <div className="date-box">Check-in: {checkIn}</div>
-        <div className="date-box">Check-out: {checkOut}</div>
-        <div className="date-box">Travelers: 1 room, {adults} traveler{adults > 1 ? 's' : ''}</div>
-    </div>
-
-    <div className="rooms-flex-container">
-    {offers && offers?.categorizedListings ? (
-        offers?.categorizedListings?.slice(0, 3).map((listing, index) => (
-            <div key={index} className="room-container" style={{ backgroundColor: 'white', padding: '20px', margin: '10px 0' }}>
-                {listing?.primarySelections[0]?.propertyUnit?.unitGallery?.gallery[0]?.image?.url && (
-                    <img src={listing?.primarySelections[0]?.propertyUnit?.unitGallery?.gallery[0]?.image?.url} alt="Room Image" style={{ width: '100%' }} />
-                )}
-                <h3>{listing?.header?.text}</h3>
-                <ul>
-                    {listing?.primarySelections[0]?.propertyUnit?.features?.slice(0, 4).map((feature, idx) => (
-                        <li key={idx}>{feature?.text}</li>
-                    ))}
-                </ul>
-                {listing?.highlightedMessages[0]?.trigger?.value && (
-                    <p style={{ color: 'green', fontWeight: 'bold' }}>{listing?.highlightedMessages[0]?.trigger?.value}</p>
-                )}
-                <hr style={{ borderColor: 'grey' }} />
-                {listing?.primarySelections[0]?.propertyUnit?.ratePlans[0]?.priceDetails[0]?.price?.displayMessages[0]?.lineItems[0]?.price && (
-                    <p style={{ fontWeight: 'bold' }}>{listing?.primarySelections[0]?.propertyUnit?.ratePlans[0]?.priceDetails[0]?.price?.displayMessages[0]?.lineItems[0]?.price?.formatted}</p>
-                )}
-                {listing?.primarySelections[0]?.propertyUnit?.ratePlans[0]?.priceDetails[0]?.price?.displayMessages[1]?.lineItems[0] && (
-                    <p>Total price: {listing?.primarySelections[0]?.propertyUnit?.ratePlans[0]?.priceDetails[0]?.price?.displayMessages[1]?.lineItems[0]?.value}</p>
-                )}
-                {listing?.primarySelections[0]?.propertyUnit?.ratePlans[0]?.priceDetails[0]?.price?.displayMessages[2]?.lineItems[0] && (
-                    <p>Price details: {listing?.primarySelections[0]?.propertyUnit?.ratePlans[0]?.priceDetails[0]?.price?.displayMessages[2]?.lineItems[0]?.value}</p>
-                )}
-            </div>
-        ))
-    ) : <p>There are no available rooms at this date.</p>}
-</div>
-</section>
+        <h2>Hotel Prices</h2>
+        <div style={{ display: 'flex', justifyContent: 'space-around', margin: '20px 0' }}>
+            <div className="date-box">Check-in: {checkIn}</div>
+            <div className="date-box">Check-out: {checkOut}</div>
+            <div className="date-box">Travelers: 1 room, {adults} traveler{adults > 1 ? 's' : ''}</div>
+        </div>
+        <div className="rooms-flex-container">
+            {offers && offers.categorizedListings ? offers.categorizedListings.map((listing, index) => renderRoomDetails(listing)) : <p>There are no available rooms at this date.</p>}
+        </div>
+    </section>
 <section id="details">
                 <h2>About this Property</h2>
                 {
