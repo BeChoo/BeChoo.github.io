@@ -1,4 +1,4 @@
-import axios from 'axios'; import Cors from 'cors';
+import axios from 'axios';
 import Cors from 'cors';
 
 const cors = Cors({
