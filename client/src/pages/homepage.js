@@ -42,7 +42,6 @@ export default function Home() {
     const getCity = async () => {
         try {
             const res = await axios.get('https://gotel-api-gotel.vercel.app/api/city/', {
-            const res = await axios.get('https://gotel-api-gotel.vercel.app/api/city/', {
                 params: { searchCity }
             });
             const { data } = res;
@@ -149,7 +148,7 @@ export default function Home() {
             setSortedHotels(sorted);
         }
     };
-    
+
     const toggleSortByScore = (order) => {
         if (sortByScore === order) {
             setSortByScore(null); // If already active, deactivate
@@ -167,7 +166,7 @@ export default function Home() {
             setSortedHotels(sorted);
         }
     };
-    
+
 
     return (
         <div className="container">
@@ -223,39 +222,39 @@ export default function Home() {
                     </button>
                 </div>
             )}
-{sortedHotels && (
-    <div className="hotel-container mt-6">
-            <div className="flex items-center">
-            <h3 className="text-secondary text-lg mr-4">Sort by:</h3>
-            <button
-    className={`sort-button ${sortByPrice === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-    onClick={() => toggleSortByPrice('asc')}
->
-    Price Low to High
-</button>
-<button
-    className={`sort-button ${sortByPrice === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-    onClick={() => toggleSortByPrice('desc')}
->
-    Price High to Low
-</button>
-<button
-    className={`sort-button ${sortByScore === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-    onClick={() => toggleSortByScore('asc')}
->
-    Highest Rating
-</button>
-<button
-    className={`sort-button ${sortByScore === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
-    onClick={() => toggleSortByScore('desc')}
->
-    Lowest Rating
-</button>
+            {sortedHotels && (
+                <div className="hotel-container mt-6">
+                    <div className="flex items-center">
+                        <h3 className="text-secondary text-lg mr-4">Sort by:</h3>
+                        <button
+                            className={`sort-button ${sortByPrice === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+                            onClick={() => toggleSortByPrice('asc')}
+                        >
+                            Price Low to High
+                        </button>
+                        <button
+                            className={`sort-button ${sortByPrice === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+                            onClick={() => toggleSortByPrice('desc')}
+                        >
+                            Price High to Low
+                        </button>
+                        <button
+                            className={`sort-button ${sortByScore === 'asc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+                            onClick={() => toggleSortByScore('asc')}
+                        >
+                            Highest Rating
+                        </button>
+                        <button
+                            className={`sort-button ${sortByScore === 'desc' ? 'bg-active text-white' : 'bg-primary text-active'}`}
+                            onClick={() => toggleSortByScore('desc')}
+                        >
+                            Lowest Rating
+                        </button>
 
-        </div>
-        {sortedHotels.map(hotel => (
-            <div key={hotel.id} className="hotel-item">
-                 <input
+                    </div>
+                    {sortedHotels.map(hotel => (
+                        <div key={hotel.id} className="hotel-item">
+                            <input
                                 type="checkbox"
                                 checked={selectedHotels.includes(hotel.id)}
                                 onChange={() => handleSelectHotel(hotel.id)}
