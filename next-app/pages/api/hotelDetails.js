@@ -9,7 +9,7 @@ export default async function handler(req, res) {
         url: 'https://hotels-com-provider.p.rapidapi.com/v2/hotels/details',
         params: { domain, hotel_id, locale },
         headers: {
-            'X-RapidAPI-Key': 'cc2d0ee1c5msh5a5d341f07343edp1b881fjsn81db735615cf',
+            'X-RapidAPI-Key': '55be8b6ed7mshd007e3fe20ca075p134d06jsn19e62b391381',
             'X-RapidAPI-Host': 'hotels-com-provider.p.rapidapi.com'
         }
     };
