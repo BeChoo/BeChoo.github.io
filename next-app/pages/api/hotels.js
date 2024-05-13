@@ -1,15 +1,34 @@
-import axios from "axios";
+import axios from 'axios';
 import Cors from 'cors';
 
+// Initialize CORS middleware with your specific allowed origins
 const cors = Cors({
   methods: ['GET', 'HEAD', 'POST', 'OPTIONS'],
-  origin: ['https://gotel-frontend-eight.vercel.app', 'https://gotel-frontend-gotel.vercel.app', 'https://gotel-frontend-git-main-gotel.vercel.app'],
+  origin: [
+    'https://gotel-frontend-eight.vercel.app', 
+    'https://gotel-frontend-gotel.vercel.app', 
+    'https://gotel-frontend-git-main-gotel.vercel.app'
+  ],
   optionsSuccessStatus: 200
 });
 
-//Function responsible for handling requests coming from API
+// Helper function to apply CORS and other middleware
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+      return resolve(result);
+    });
+  });
+}
+
 export default async function handler(req, res) {
-  //RapidAPI endpoint configurations that hold all standard input options for gathering hotel data
+  // Run CORS middleware first
+  await runMiddleware(req, res, cors);
+
+  // Define API request options to the external service
   const options = {
     method: 'GET',
     url: 'https://hotels-com-provider.p.rapidapi.com/v2/hotels/search',
@@ -34,19 +53,17 @@ export default async function handler(req, res) {
       available_filter: 'SHOW_AVAILABLE_ONLY'
     },
     headers: {
-      //RapidAPI key and host authentification 
       "x-rapidapi-host": "hotels-com-provider.p.rapidapi.com",
       "x-rapidapi-key": '55be8b6ed7mshd007e3fe20ca075p134d06jsn19e62b391381'
     }
   };
 
   try {
-    //Sends http rqeuest with the above configuration
     const response = await axios.request(options);
-    //Sends a successful response with the data received from API
+    // Set CORS headers explicitly if needed, not typically necessary if cors middleware is configured
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).json(response.data);
   } catch (error) {
-    //Error handling in the event the response is not successful 
     console.error(error);
     res.status(500).json({ error: "Error" });
   }
