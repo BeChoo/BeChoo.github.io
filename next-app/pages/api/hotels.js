@@ -40,17 +40,14 @@ export default async function handler(req, res) {
     }
   };
 
-  console.log(req, res);
   try {
     //Sends http rqeuest with the above configuration
-    const response = await axios.request(req);
-    
+    const response = await axios.request(options);
     //Sends a successful response with the data received from API
     res.status(200).json(response.data);
   } catch (error) {
     //Error handling in the event the response is not successful 
     console.error(error);
-
     res.status(500).json({ error: "Error" });
   }
 }
