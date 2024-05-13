@@ -1,5 +1,13 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+const express = require('express');
+const app = express();
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://gotel-frontend-git-main-gotel.vercel.app");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 export default function Home() {
     //State variables that manage the information used in this page
@@ -11,8 +19,8 @@ export default function Home() {
     const [guests, setGuests] = useState(null);
     const [hotels, setHotels] = useState(null);
     const [sortedHotels, setSortedHotels] = useState(null);
-    const [sortByPrice, setSortByPrice] = useState(null); 
-    const [sortByScore, setSortByScore] = useState(null); 
+    const [sortByPrice, setSortByPrice] = useState(null);
+    const [sortByScore, setSortByScore] = useState(null);
 
     //Function to fetch city data
     const getCity = async () => {
@@ -86,7 +94,7 @@ export default function Home() {
                 <span className="text-active">Gotel</span>
             </h1>
             <h2 className="text-active text-2xl mt-6">
-                
+
             </h2>
             <div className="sm:mx-auto mt-20 justify-center sm:w-full sm:flex">
                 <input
@@ -208,15 +216,15 @@ export default function Home() {
                                 </div>
                                 <div>
                                     {/* Outputs the hotel name */}
-								<h3 className="text-lg font-medium" style={{ color: 'black' }}>
+                                    <h3 className="text-lg font-medium" style={{ color: 'black' }}>
                                         {hotel.name}
                                     </h3>
                                     {/* Outputs the hotel rating */}
-									<p className="text-sm text-gray-600 mb-4"> {/* Modify the text color here */}
-    									Rating: {hotel.reviews?.score || 'N/A'}
-									</p>
+                                    <p className="text-sm text-gray-600 mb-4"> {/* Modify the text color here */}
+                                        Rating: {hotel.reviews?.score || 'N/A'}
+                                    </p>
                                     {/* Outputs the hotel price */}
-                                    <p className="text-lg font-bold text-active"> 
+                                    <p className="text-lg font-bold text-active">
                                         {hotel.price.options[0]?.formattedDisplayPrice}
                                     </p>
                                 </div>
