@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     //RapidAPI key and host authentification 
     headers: {
       "x-rapidapi-host": "hotels-com-provider.p.rapidapi.com",
-      "x-rapidapi-key": 'cc2d0ee1c5msh5a5d341f07343edp1b881fjsn81db735615cf',
+      "x-rapidapi-key": '55be8b6ed7mshd007e3fe20ca075p134d06jsn19e62b391381',
     },
   };
   try {
