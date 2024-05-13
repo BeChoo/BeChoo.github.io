@@ -1,9 +1,5 @@
-console.log("Inside hotels.js")
-
 import axios from "axios";
 import Cors from 'cors';
-
-console.log("imported axios and cors")
 
 const cors = Cors({
   methods: ['GET', 'HEAD', 'POST', 'OPTIONS'],
@@ -11,11 +7,8 @@ const cors = Cors({
   optionsSuccessStatus: 200
 });
 
-console.log("corsOptions set")
-
 //Function responsible for handling requests coming from API
 export default async function handler(req, res) {
-  console.log("inside handler function")
   //RapidAPI endpoint configurations that hold all standard input options for gathering hotel data
   const options = {
     method: 'GET',
@@ -46,8 +39,6 @@ export default async function handler(req, res) {
       'X-RapidAPI-Host': 'hotels-com-provider.p.rapidapi.com'
     }
   };
-
-  console.log("options set, outside handler function")
 
   try {
     //Sends http rqeuest with the above configuration
