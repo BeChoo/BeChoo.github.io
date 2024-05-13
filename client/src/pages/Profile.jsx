@@ -11,21 +11,20 @@ const Profile = () => {
   const [newProfilePic, setNewProfilePic] = useState("");
   const { user } = useUser();
 
-  useEffect(() => {
-    if (user && user._id) {
-      axios
-        .get(`https://gotel-api.vercel.app/${user._id}`)
-        .then((response) => {
-          setUserReviews(response.data);
-        })
-        .catch((error) => {
-          console.error("Error fetching reviews:", error);
-        });
-      if (user.savedHotels.length > 0) {
-        fetchSavedHotels();
-      }
-    }
-  }, [user]);
+    useEffect(() => {
+        if (user && user._id) {
+            axios.get(`https://gotel-api.vercel.app/userReviews/${user._id}`)
+                .then(response => {
+                    setUserReviews(response.data);
+                })
+                .catch(error => {
+                    console.error('Error fetching reviews:', error);
+                });
+            if (user.savedHotels.length > 0) {
+                fetchSavedHotels();
+            }
+        }
+    }, [user]);
 
   const fetchSavedHotels = async () => {
     try {
@@ -54,27 +53,23 @@ const Profile = () => {
     }
   };
 
-  const updateProfilePicture = () => {
-    axios
-      .post(`https://gotel-api.vercel.app/updateProfilePic`, {
-        userId: user._id,
-        profilePic: newProfilePic,
-      })
-      .then((response) => {
-        alert("Profile picture updated successfully.");
-        // Here you should update the user context or re-fetch the user data
-      })
-      .catch((error) => {
-        console.error("Error updating profile picture:", error);
-      });
-  };
+    const updateProfilePicture = () => {
+        axios.post(`https://gotel-api.vercel.app/updateProfilePic`, { userId: user._id, profilePic: newProfilePic })
+            .then(response => {
+                alert('Profile picture updated successfully.');
+                // Here you should update the user context or re-fetch the user data
+            })
+            .catch(error => {
+                console.error('Error updating profile picture:', error);
+            });
+    };
 
-  const toggleReviews = () => setShowReviews(!showReviews);
-  const toggleSavedHotels = () => setShowSavedHotels(!showSavedHotels);
+    const toggleReviews = () => setShowReviews(!showReviews);
+    const toggleSavedHotels = () => setShowSavedHotels(!showSavedHotels);
 
-  if (!user) {
-    return <div>Please log in to view your profile.</div>;
-  }
+    if (!user) {
+        return <div>Please log in to view your profile.</div>;
+    }
 
   return (
     <div className="profile">
