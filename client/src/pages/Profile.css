@@ -1,3 +1,4 @@
+/* Creates the container for profile */
 .profile {
     display: flex;
     flex-direction: column;
@@ -20,6 +21,7 @@
     margin-bottom: 20px;
 }
 
+/* Handles the drop down button */
 .toggle-button {
     background-color: #007BFF;
     color: white;

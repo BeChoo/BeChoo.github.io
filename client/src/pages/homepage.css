@@ -11,18 +11,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Ensure the container takes up at least the full height of the viewport */
+    min-height: 100vh; 
 }
 
 /* Highlight span within title */
 .highlight {
-    color: #007bff; /* Blue color */
+    color: #007bff; 
 }
 
 /* Subtitle */
 .subtitle {
     font-size: 2rem;
-    color: #007bff; /* Blue color */
+    color: #007bff; 
     margin-top: 1rem;
 }
 
@@ -31,7 +31,8 @@
     display: flex;
     align-items: center;
     margin-top: 3rem;
-    justify-content: center; /* Center the search container */
+    /* Centers the search container */
+    justify-content: center; 
 }
 
 /* Search Input Field */
@@ -59,7 +60,7 @@
     display: flex;
     align-items: center;
     margin-top: 2rem;
-    justify-content: center; /* Center the date container */
+    justify-content: center; 
 }
 
 /* Date Input Fields */
@@ -96,15 +97,15 @@
     display: flex;
     align-items: center;
     margin-top: 1rem;
-    justify-content: center; /* Center the sorting container */
+    justify-content: center; 
 }
 
 .bg-primary {
-    background-color: #6c757d; /* Your primary color */
+    background-color: #6c757d; /* Primary color */
 }
 
 .bg-active {
-    background-color: #007bff; /* Active state color, such as blue */
+    background-color: #007bff; 
 }
 
 .sort-button {
@@ -120,31 +121,31 @@
 }
 
 .sort-button.text-active {
-    color: #000; /* Inactive text color if needed */
+    color: #000; 
 }
 
 .sort-button:hover {
-    background-color: #0056b3; /* Darker blue on hover for better UI feedback */
+    background-color: #0056b3; 
 }
 
 /* Hotel Container */
 .hotel-container {
     margin-top: 100px;
-    max-width: 1200px; /* Limit the width of the hotel container */
-    margin: 0 auto; /* Center the hotel container horizontally */
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
 /* Hotel Item */
 .hotel-item {
     margin-bottom: 20px;
-    height: 330px; /* Fixed height */
-    width: 1200px; /* Full width of the container */
+    height: 330px; 
+    width: 1200px; 
     border-radius: 10px;
-    overflow: hidden; /* Hide overflow, or use 'auto' to enable scrolling */
+    overflow: hidden; 
     display: flex;
-    flex-direction: row; /* Aligns child elements horizontally */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds shadow for better visibility */
-    background-color: #fff; /* Background color */
+    flex-direction: row; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    background-color: #fff; 
 }
 
 /* Hotel Info Container */
@@ -154,32 +155,32 @@
 
 /* Hotel Image Container */
 .hotel-image-container {
-    width: 350px; /* Set the fixed width */
-    height: auto; /* Set the fixed height */
-    overflow: hidden; /* Hide any overflowing content */
-    position: relative; /* Positioning context for absolute positioning of the image */
+    width: 350px; 
+    height: auto; 
+    overflow: hidden; 
+    position: relative; 
 }
 
-/* Hotel Image */
+/* Hotel Image that fixes the size of image*/
 .hotel-image {
-    position: absolute; /* Position the image absolutely within its container */
-    width: auto; /* Allow the image to adjust its width */
-    height: auto; /* Allow the image to adjust its height */
-    min-width: 100%; /* Ensure the image fills the entire width of the container */
-    min-height: 120%; /* Ensure the image fills the entire height of the container */
-    top: 50%; /* Position the image vertically centered */
-    left: 50%; /* Position the image horizontally centered */
-    transform: translate(-50%, -50%); /* Center the image */
+    position: absolute; 
+    width: auto; 
+    height: auto; 
+    min-width: 100%; 
+    min-height: 120%; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
 }
 
 /* Hotel Details */
 .hotel-details {
     padding: 20px; /* Add padding to the details container */
-    flex-grow: 1; /* Allow the details container to grow and fill the remaining space */
+    flex-grow: 1; /* detail container fills remaining space */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #fff; /* Background color for the details container */
+    background-color: #fff; 
 }
 
 /* Hotel Name */
@@ -196,7 +197,7 @@
 .hotel-rating {
     font-size: 14px;
     font-weight: bold;
-    color: #fff; /* White color */
+    color: #fff; 
     margin: 0; /* Remove default margin */
 }
 
@@ -204,22 +205,22 @@
     position: relative;
     bottom: -130px;
     left: 0;
-    background-color: #28a745; /* Green background */
-    padding: 5px 10px; /* Add padding for spacing */
-    border-radius: 5px; /* Add border radius for rounded corners */
+    background-color: #28a745; 
+    padding: 5px 10px; 
+    border-radius: 5px; 
     max-width: fit-content;
 }
 
 /* Hotel Description */
 .hotel-description {
     font-size: 14px;
-    color: #000; /* Black color */
+    color: #000;
     margin-left: 10px; /* Add margin for spacing */
 }
 
 /* Define descriptions for different rating ranges */
 .hotel-description::before {
-    content: attr(data-rating); /* Use the data-rating attribute as content */
+    content: attr(data-rating); /* Uses the data-rating attribute as content */
 }
 
 /* Define the description text based on rating */
