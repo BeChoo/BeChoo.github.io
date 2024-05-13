@@ -41,10 +41,7 @@ export default function Home() {
     //Function to fetch city data
     const getCity = async () => {
         try {
-            // const res = await axios.get('https://gotel-api-gotel.vercel.app/api/city?searchCity=paris', {
-            //     params: { searchCity }
-            // });
-            const res = await axios.get('https://gotel-api-gotel.vercel.app/api/city?searchCity=paris');
+            const res = await axios.get(`https://gotel-api-gotel.vercel.app/api/city?searchCity=${searchCity}`);
             const { data } = res;
             console.log(res);
             setCity(data.data[0].gaiaId); //Set the city ID using API get request
