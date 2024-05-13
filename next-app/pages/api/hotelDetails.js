@@ -2,7 +2,7 @@ const axios = require('axios');
 import Cors from 'cors';
 
 const cors = Cors({
-  methods: ['GET', 'HEAD'],
+    methods: ['GET', 'HEAD'],
 });
 
 // Function responsible for handling requests to fetch detailed hotel data
