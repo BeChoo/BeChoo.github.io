@@ -41,10 +41,8 @@ export default function Home() {
     //Function to fetch city data
     const getCity = async () => {
         try {
-            const res = await axios.get(`https://gotel-api-gotel.vercel.app/api/city?searchCity=${searchCity}`);
+            const res = await axios.get(`https://gotel-api-gotel.vercel.app/api/city?searchCity=${searchCity}`); // https://gotel-api-gotel.vercel.app/api/city?searchCity=paris
             const { data } = res;
-            console.log('res', res);
-            console.log('searchCIty', searchCity);
             setCity(data.data[0].gaiaId); //Set the city ID using API get request
         } catch (error) {
             console.log(error);
@@ -54,9 +52,7 @@ export default function Home() {
     // Function to fetch hotel data
     const getHotels = async () => {
         try {
-            const res = await axios.get('https://gotel-api-gotel.vercel.app/api/hotels/', {
-                params: { city, checkIn, checkOut, guests }
-            });
+            const res = await axios.get(`https://gotel-api-gotel.vercel.app/api/hotels/?city=${city}&checkIn=${checkIn}&checkOut=${checkOut}&guests=${guests}`); // https://gotel-api-gotel.vercel.app/api/hotels/?city=2734&checkIn=2024-05-16&checkOut=2024-05-24&guests=1
             const { data } = res;
             setHotels(data.properties); //Set the fetched hotel data using API get request
         } catch (error) {

@@ -156,7 +156,7 @@ export default function Home() {
                             <button
                                 type="submit"
                                 className="w-full h-full md:py-0 py-4 text-primary font-bold break-words"
-                                onClick={() => getHotels()} // Call getHotels() when clicked
+                                onClick={() => getHotels()}
                             >
                                 Find Hotels
                             </button>

@@ -1,7 +1,10 @@
 import axios from 'axios'; import Cors from 'cors';
+import Cors from 'cors';
 
 const cors = Cors({
-    methods: ['GET', 'HEAD'],
+  methods: ['GET', 'HEAD', 'POST', 'OPTIONS'],
+  origin: ['https://gotel-frontend-eight.vercel.app', 'https://gotel-frontend-gotel.vercel.app', 'https://gotel-frontend-git-main-gotel.vercel.app'],
+  optionsSuccessStatus: 200
 });
 
 export default async function handler(req, res) {
