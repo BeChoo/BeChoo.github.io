@@ -25,7 +25,7 @@ function Login() {
             })
             .catch(error => {
                 console.error("Login failed:", error.response ? error.response.data.message : "No response");
-                setMessage("Failed to communicate with the server.");
+                setMessage("Wrong login credentials.");
             });
     };
 
