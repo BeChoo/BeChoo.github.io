@@ -180,10 +180,9 @@ export default function Home() {
                     type="text"
                     className="search-input"
                     placeholder="Enter your destination city"
-                    onSubmit={e => {
+                    onChange={e => {
                         setSearchCity(e.target.value);
                     }}
-
                 />
                 <div className="button-container">
                     <button
