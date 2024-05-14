@@ -14,7 +14,7 @@ const Profile = () => {
   useEffect(() => {
     if (user && user._id) {
       axios
-        .get(`https://gotel-api.vercel.app/${userReviews}/${user._id}`)
+        .get(`https://gotel-api.vercel.app${userReviews}/${user._id}`)
         .then((response) => {
           setUserReviews(response.data);
         })
@@ -33,7 +33,7 @@ const Profile = () => {
         user.savedHotels.map((hotel) =>
           axios
             .get(
-              `https://gotel-api-gotel.vercel.app/api/hotelDetails/${hotel.hotelId}`
+              `https://gotel-api.vercel.app/api/hotelDetails/${hotel.hotelId}`
             )
             .catch((err) => {
               console.error(
