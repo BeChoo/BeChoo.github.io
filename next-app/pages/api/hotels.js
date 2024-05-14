@@ -7,8 +7,6 @@ const cors = Cors({
   optionsSuccessStatus: 200
 });
 
-// Adding in order to start a new deployment
-
 //Function responsible for handling requests coming from API
 export default async function handler(req, res) {
   //RapidAPI endpoint configurations that hold all standard input options for gathering hotel data
