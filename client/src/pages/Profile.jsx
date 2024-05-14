@@ -14,7 +14,7 @@ const Profile = () => {
   useEffect(() => {
     if (user && user._id) {
       axios
-        .get(`https://gotel-api.vercel.app/api/userReviews/${user._id}`)
+        .get(`https://gotel-api.vercel.app/userReviews/${user._id}`)
         .then((response) => {
           setUserReviews(response.data);
         })
