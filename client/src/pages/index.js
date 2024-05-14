@@ -68,16 +68,16 @@ const Home = () => {
     const isDifferentDay = (lastDate) => {
         const today = new Date();
         const lastUpdatedDate = new Date(lastDate);
-    
+
         return lastUpdatedDate.getDate() !== today.getDate() ||
-               lastUpdatedDate.getMonth() !== today.getMonth() ||
-               lastUpdatedDate.getFullYear() !== today.getFullYear();
+            lastUpdatedDate.getMonth() !== today.getMonth() ||
+            lastUpdatedDate.getFullYear() !== today.getFullYear();
     };
 
     useEffect(() => {
         const hotelData = localStorage.getItem('hotelOfTheDay');
         const storedHotel = hotelData ? JSON.parse(hotelData) : null;
-    
+
         // Check if the stored hotel should be updated
         if (!storedHotel || isDifferentDay(storedHotel.lastUpdated)) {
             const randomIndex = Math.floor(Math.random() * hotelsData.length);
@@ -116,14 +116,14 @@ const Home = () => {
     }, []);
 
     const getLocalHotels = async (cityName) => {
-        const cityResponse = await axios.get('/api/city/', { params: { searchCity: cityName } });
+        const cityResponse = await axios.get('https://gotel-api-gotel.vercel.app/api/city/', { params: { searchCity: cityName } });
         const cityId = cityResponse.data.data[0].gaiaId;
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         const checkOutDate = new Date();
         checkOutDate.setDate(tomorrow.getDate() + 2);
 
-        const hotelResponse = await axios.get('/api/hotels/', {
+        const hotelResponse = await axios.get('https://gotel-api-gotel.vercel.app/api/hotels/', {
             params: {
                 city: cityId,
                 checkIn: tomorrow.toISOString().split('T')[0],
@@ -170,9 +170,9 @@ const Home = () => {
                             <div key={hotel.id} className="hotel-card">
                                 <img src={hotel.propertyImage.image.url} alt={hotel.name} />
                                 <div className="hotel-info">
-                                <div className="hotel-name" style={{ fontSize: '16px', fontWeight: 'bold', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', marginTop: '20px', textAlign: 'center' }}>
-            {hotel.name}
-        </div>
+                                    <div className="hotel-name" style={{ fontSize: '16px', fontWeight: 'bold', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', marginTop: '20px', textAlign: 'center' }}>
+                                        {hotel.name}
+                                    </div>
                                     <div className="hotel-location">{hotel.neighborhood?.name || 'Location not available'}</div>
                                 </div>
                             </div>
@@ -185,10 +185,10 @@ const Home = () => {
                 </div>
             )}
             {hotels.length === 0 && (
-    <div style={{ textAlign: "center" }}>
-        <button onClick={getLocation}>View Trending Hotels at Your Location</button>
-    </div>
-)}
+                <div style={{ textAlign: "center" }}>
+                    <button onClick={getLocation}>View Trending Hotels at Your Location</button>
+                </div>
+            )}
         </div>
     );
 };
