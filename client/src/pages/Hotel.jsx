@@ -98,7 +98,7 @@ const Hotel = () => {
     }
     try {
       const { data } = await axios.post(
-        "https://gotel-backend.vercel.app/submitReview",
+        "https://gotel-api.vercel.app//submitReview",
         {
           userId: user._id,
           hotelId: id,
