@@ -116,7 +116,7 @@ const Home = () => {
     }, []);
 
     const getLocalHotels = async (cityName) => {
-        const cityResponse = await axios.get(`https://gotel-api-gotel.vercel.app/api/city/?searchCity=${cityName}`);
+        const cityResponse = await axios.get(`https://gotel-api-gotel.vercel.app/api/city?searchCity=${cityName}`);
         const cityId = cityResponse.data.data[0].gaiaId;
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
