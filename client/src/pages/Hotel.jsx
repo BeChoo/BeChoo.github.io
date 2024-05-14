@@ -24,7 +24,7 @@ const Hotel = () => {
   useEffect(() => {
     const fetchHotelDetails = async () => {
       try {
-        const url = `https://gotel-api-gotel.vercel.app//api/hotelDetails?hotel_id=${id}`;
+        const url = `https://gotel-api-gotel.vercel.app/api/hotelDetails?hotel_id=${id}`;
         const response = await axios.get(url);
         setHotel(response.data);
         setNearbyPOIs(response.data.summary.nearbyPOIs.items);
