@@ -50,14 +50,17 @@ const Hotel = () => {
     adultsNumber
   ) => {
     try {
-      const response = await axios.get("/api/hotelOffers", {
-        params: {
-          hotelId,
-          checkIn: checkInDate,
-          checkOut: checkOutDate,
-          adults: adultsNumber,
-        },
-      });
+      const response = await axios.get(
+        "https://gotel-frontend-git-main-gotel.vercel.app/api/hotelOffers",
+        {
+          params: {
+            hotelId,
+            checkIn: checkInDate,
+            checkOut: checkOutDate,
+            adults: adultsNumber,
+          },
+        }
+      );
       if (response.data && response.data.categorizedListings.length > 0) {
         setOffers(response.data);
       } else {
