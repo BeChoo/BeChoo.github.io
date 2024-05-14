@@ -33,7 +33,7 @@ const Profile = () => {
         user.savedHotels.map((hotel) =>
           axios
             .get(
-              `https://gotel-backend.vercel.app/hotelDetails/${hotel.hotelId}`
+              `https://gotel-api-gotel.vercel.app/api/hotelDetails/${hotel.hotelId}`
             )
             .catch((err) => {
               console.error(
