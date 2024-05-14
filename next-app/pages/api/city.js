@@ -3,8 +3,7 @@ import Cors from 'cors';
 
 const cors = Cors({
   methods: ['GET', 'HEAD', 'POST', 'OPTIONS'],
-  origin: ['https://gotel-frontend-eight.vercel.app'],
-  // 'https://gotel-frontend-gotel.vercel.app', 'https://gotel-frontend-git-main-gotel.vercel.app'],
+  origin: ['https://gotel-frontend-eight.vercel.app', 'https://gotel-frontend-gotel.vercel.app', 'https://gotel-frontend-git-main-gotel.vercel.app'],
   optionsSuccessStatus: 200
 });
 

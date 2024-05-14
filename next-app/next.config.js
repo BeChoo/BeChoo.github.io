@@ -1,13 +1,4 @@
 module.exports = {
-    // Testing removing trailing slashes in all code
-    async rewrites() {
-        return [
-            {
-                source: '/api/:path*/',
-                destination: '/api/:path*',
-            }
-        ]
-    },
     async headers() {
         return [
             {
