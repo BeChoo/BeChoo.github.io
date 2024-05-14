@@ -51,7 +51,7 @@ const Hotel = () => {
   ) => {
     try {
       const response = await axios.get(
-        "https://gotel-frontend-git-main-gotel.vercel.app/api/hotelOffers",
+        "https://gotel-api-gotel.vercel.app/api/hotelOffers",
         {
           params: {
             hotelId,
