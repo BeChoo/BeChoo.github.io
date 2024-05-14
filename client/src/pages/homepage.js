@@ -52,7 +52,7 @@ export default function Home() {
     // Function to fetch hotel data
     const getHotels = async () => {
         try {
-            const res = await axios.get(`https://gotel-api-gotel.vercel.app/api/hotels/?city=${city}&checkIn=${checkIn}&checkOut=${checkOut}&guests=${guests}`); // https://gotel-api-gotel.vercel.app/api/hotels/?city=2734&checkIn=2024-05-16&checkOut=2024-05-24&guests=1
+            const res = await axios.get(`https://gotel-api-gotel.vercel.app/api/hotels?city=${city}&checkIn=${checkIn}&checkOut=${checkOut}&guests=${guests}`); // https://gotel-api-gotel.vercel.app/api/hotels/?city=2734&checkIn=2024-05-16&checkOut=2024-05-24&guests=1
             const { data } = res;
             setHotels(data.properties); //Set the fetched hotel data using API get request
         } catch (error) {
