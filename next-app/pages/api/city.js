@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       "x-rapidapi-key": '55be8b6ed7mshd007e3fe20ca075p134d06jsn19e62b391381'
     }
   };
-  
+
   try {
     //Sends http rqeuest with the above configuration
     const response = await axios.request(options);
