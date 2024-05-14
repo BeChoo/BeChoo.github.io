@@ -123,7 +123,13 @@ const Home = () => {
         const checkOutDate = new Date();
         checkOutDate.setDate(tomorrow.getDate() + 2);
 
-        const hotelResponse = await axios.get(`https://gotel-api-gotel.vercel.app/api/hotels?city=${cityName}&checkIn=${checkIn}&checkOut=${checkOut}&guests=${guests}`);
+        const hotelResponse = await axios.get(`https://gotel-api-gotel.vercel.app/api/hotels?city=${cityId}&checkIn=${tomorrow.toISOString().split('T')[0]}&checkOut=${checkOutDate.toISOString().split('T')[0]}&guests=1`);
+        // params: {
+        //     city: cityId,
+        //     checkIn: tomorrow.toISOString().split('T')[0],
+        //     checkOut: checkOutDate.toISOString().split('T')[0],
+        //     guests: 1
+        // }
         setHotels(hotelResponse.data.properties.sort((a, b) => b.reviews?.total - a.reviews?.total).slice(0, 18));
     };
 
