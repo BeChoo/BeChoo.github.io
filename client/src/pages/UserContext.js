@@ -20,7 +20,7 @@ export const UserProvider = ({ children }) => {
     };
 
     const fetchUserReviews = (userId) => {
-        axios.get(`https://gotel-api.vercel.app/${userId}`)
+        axios.get(`http://localhost:3002/${userId}`)
             .then(response => {
                 setReviews(response.data); // Assuming the data structure matches what you expect
             })

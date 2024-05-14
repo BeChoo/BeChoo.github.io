@@ -41,7 +41,7 @@ export default function Home() {
     //Function to fetch city data
     const getCity = async () => {
         try {
-            const res = await axios.get('https://gotel-api-gotel.vercel.app/api/city/', {
+            const res = await axios.get('/api/city/', {
                 params: { searchCity }
             });
             const { data } = res;
@@ -54,7 +54,7 @@ export default function Home() {
     //Function to fetch hotel data
     const getHotels = async () => {
         try {
-            const res = await axios.get('https://gotel-api-gotel.vercel.app/api/hotels/', {
+            const res = await axios.get('/api/hotels/', {
                 params: { city, checkIn, checkOut, guests }
             });
             const { data } = res;
