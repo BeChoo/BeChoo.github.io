@@ -28,6 +28,9 @@ const Navbar = () => {
                         <NavLink to="/mappage" activeStyle>
                             Use A Map
                         </NavLink>
+                        <NavLink to="/about" activeStyle>
+                            About Us
+                        </NavLink>
                         {user ? (
                             <div className="dropdown">
                                 <button className="dropbtn">Profile</button>
@@ -41,9 +44,6 @@ const Navbar = () => {
                                 Sign In
                             </NavLink>
                         )}
-                        <NavLink to="/about" activeStyle>
-                            About Us
-                        </NavLink>
                     </NavMenu>
                 </Nav>
             )}

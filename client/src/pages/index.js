@@ -134,7 +134,7 @@ const Home = () => {
     };
 
     return (
-        <div>
+        <div className='container'>
             <h1 style={{ textAlign: "center" }}>Welcome to Gotel!</h1>
             <div className="centered-content">
                 <div className="image-container"><img src={Hyatt} alt="Hyatt" /></div>

@@ -1,3 +1,7 @@
+.container {
+    max-width: 100vw;
+}
+
 .centered-content {
     display: flex;
     flex-wrap: wrap;
@@ -6,10 +10,21 @@
 }
 
 @keyframes fade {
-    0% { opacity: 0; }
-    25% { opacity: 1; }
-    75% { opacity: 1; }
-    100% { opacity: 0; }
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 .image-container {
@@ -19,7 +34,8 @@
 
 .carousel-container {
     position: relative;
-    overflow: hidden; /* Prevents any overflow from the carousel */
+    overflow: hidden;
+    /* Prevents any overflow from the carousel */
 }
 
 .hotel-carousel {
@@ -35,7 +51,8 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
-    background-color: white; /* Set background color to white */
+    background-color: white;
+    /* Set background color to white */
 }
 
 .hotel-card img {
