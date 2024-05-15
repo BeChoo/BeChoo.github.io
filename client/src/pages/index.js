@@ -177,7 +177,7 @@ const Home = () => {
             )}
             {hotels.length === 0 && (
                 <div style={{ textAlign: "center" }}>
-                    <button onClick={getLocation}>View Trending Hotels at Your Location</button>
+                    <button className='carousel-controls-button' onClick={getLocation}>View Trending Hotels at Your Location</button>
                 </div>
             )}
         </div>
