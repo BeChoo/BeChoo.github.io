@@ -20,14 +20,11 @@ const Navbar = () => {
                     <NavMenu>
                         <LogoImage src={GotelLogo} alt="GotelLogo" />
                         <NavLink to="/index" activeStyle>
-                            Initial
-                        </NavLink>
-                        <NavLink to="/about" activeStyle>
-                            About
-                        </NavLink>
-                        <NavLink to="/homepage" activeStyle>
                             Home
                         </NavLink>
+                        {/* <NavLink to="/homepage" activeStyle>
+                            Home
+                        </NavLink> */}
                         <NavLink to="/mappage" activeStyle>
                             Use A Map
                         </NavLink>
@@ -44,6 +41,9 @@ const Navbar = () => {
                                 Sign In
                             </NavLink>
                         )}
+                        <NavLink to="/about" activeStyle>
+                            About Us
+                        </NavLink>
                     </NavMenu>
                 </Nav>
             )}

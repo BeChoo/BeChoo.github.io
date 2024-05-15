@@ -56,8 +56,6 @@ const hotelsData = [
     }
 ];
 
-
-
 const Home = () => {
     const [userLocation, setUserLocation] = useState(null);
     const [hotels, setHotels] = useState([]);
@@ -124,12 +122,6 @@ const Home = () => {
         checkOutDate.setDate(tomorrow.getDate() + 2);
 
         const hotelResponse = await axios.get(`https://gotel-api-gotel.vercel.app/api/hotels?city=${cityId}&checkIn=${tomorrow.toISOString().split('T')[0]}&checkOut=${checkOutDate.toISOString().split('T')[0]}&guests=1`);
-        // params: {
-        //     city: cityId,
-        //     checkIn: tomorrow.toISOString().split('T')[0],
-        //     checkOut: checkOutDate.toISOString().split('T')[0],
-        //     guests: 1
-        // }
         setHotels(hotelResponse.data.properties.sort((a, b) => b.reviews?.total - a.reviews?.total).slice(0, 18));
     };
 
