@@ -84,7 +84,8 @@ body {
     margin-top: 20px;
 }
 
-.carousel-controls button {
+.carousel-controls button,
+.carousel-controls-button {
     padding: 10px 20px;
     margin: 0 10px;
     background-color: #007bff;
