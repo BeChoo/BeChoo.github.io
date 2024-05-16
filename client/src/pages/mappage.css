@@ -1,14 +1,19 @@
 header,
 main {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.searchBar input[type="search"] {
+/* input[type="search"] */
+.searchBar {
   width: 300px;
   padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .default-button {
@@ -22,9 +27,10 @@ main {
 }
 
 .map-container {
-  margin-top: 20px;
-  margin-right: 475px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
 }

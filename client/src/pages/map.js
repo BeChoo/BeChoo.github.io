@@ -35,5 +35,5 @@ const MapContainer = ({ google, city }) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyCx19ymBXj2YWJkocIIBiapQHQmzXzFnSQ'  // Replace with your actual Google Maps API key
+  apiKey: 'AIzaSyCx19ymBXj2YWJkocIIBiapQHQmzXzFnSQ'
 })(MapContainer);
