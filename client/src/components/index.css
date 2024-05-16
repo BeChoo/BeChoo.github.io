@@ -1,3 +1,29 @@
+/* Testing below */
+Nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.NavMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.h1-style {
+    margin-top: 0;
+    text-align: center;
+}
+
+/* End Test */
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -34,27 +60,4 @@
     font-size: 16px;
     border: none;
     cursor: pointer;
-}
-
-/* Testing below */
-Nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
-
-.NavMenu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 20px;
-}
-
-.h1-style {
-    margin-top: 0;
 }
