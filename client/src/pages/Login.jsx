@@ -58,7 +58,10 @@ function Login() {
           />
         </label>
         {message && <div className="error">{message}</div>}
-        <button type="submit" className="btn btn-success w-100 rounded-0">
+        <button
+          type="submit"
+          className="def-button btn btn-success w-100 rounded-0"
+        >
           Login
         </button>
       </form>
