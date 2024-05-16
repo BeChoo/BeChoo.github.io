@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
     background: #ffffb3;
-    height: 85px;
     display: flex;
     justify-content: center; 
     align-items: center; 
@@ -12,6 +11,8 @@ export const Nav = styled.nav`
     width: 100%; 
     z-index: 12;
 `;
+
+// height: 85px;
 
 export const NavLink = styled(Link)`
     color: #808080;
