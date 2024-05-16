@@ -22,12 +22,12 @@ const Navbar = () => {
                         <NavLink to="/index" activeStyle>
                             Home
                         </NavLink>
-                        {/* <NavLink to="/homepage" activeStyle>
-                            Home
-                        </NavLink> */}
-                        <NavLink to="/mappage" activeStyle>
+                        <NavLink to="/homepage" activeStyle>
                             Use A Map
                         </NavLink>
+                        {/* <NavLink to="/mappage" activeStyle>
+                            Use A Map
+                        </NavLink> */}
                         <NavLink to="/about" activeStyle>
                             About Us
                         </NavLink>
