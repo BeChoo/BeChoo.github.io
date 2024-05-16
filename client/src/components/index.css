@@ -38,12 +38,15 @@
 
 /* Testing below */
 Nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 0;
     padding: 0;
     width: 100%;
+}
+
+NavMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .h1-style {
