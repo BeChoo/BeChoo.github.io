@@ -7,12 +7,11 @@ export const Nav = styled.nav`
     display: flex;
     justify-content: center; 
     align-items: center; 
-    padding: 0; 
+    padding: 0;
+    height: 85px;
     width: 100%; 
     z-index: 12;
 `;
-
-// height: 85px;
 
 export const NavLink = styled(Link)`
     color: #808080;
