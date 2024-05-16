@@ -28,6 +28,7 @@ const fetchCityName = async (latitude, longitude) => {
         return null;
     }
 };
+
 const hotelsData = [
     {
         name: "Kawada Hotel",
