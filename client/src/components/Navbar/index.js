@@ -25,9 +25,9 @@ const Navbar = () => {
                         <NavLink to="/homepage" activeStyle>
                             Use A Map
                         </NavLink>
-                        {/* <NavLink to="/mappage" activeStyle>
-                            Use A Map
-                        </NavLink> */}
+                        <NavLink to="/mappage" activeStyle>
+                            Remove This
+                        </NavLink>
                         <NavLink to="/about" activeStyle>
                             About Us
                         </NavLink>
