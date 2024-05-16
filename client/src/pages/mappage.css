@@ -40,6 +40,8 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  padding: 0 auto;
 }
 
 header {
@@ -68,4 +70,5 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
