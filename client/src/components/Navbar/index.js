@@ -1,8 +1,8 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { Nav, NavLink, NavMenu, LogoImage } from "./NavbarElements";
-import GotelLogo from "../../images/GotelLogo.png"; // Adjust the path to your logo image
-import { useUser } from "../../pages/UserContext"; // Adjust the path to UserContext if necessary
+import GotelLogo from "../../images/GotelLogo.png";
+import { useUser } from "../../pages/UserContext";
 import '../index.css';
 
 const Navbar = () => {
