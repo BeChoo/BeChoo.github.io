@@ -14,9 +14,9 @@ const Mappage = () => {
   return (
     <div>
       <header>
-        <h1>Browse below</h1>
+        <h1>Browse Below</h1>
       </header>
-      <main>
+      {/* <main>
         <form className="searchBar" onSubmit={handleSearch}>
           <input type="search" name="city" placeholder="Enter city" />
           <button className='default-button' type="submit">Search</button>
@@ -24,7 +24,17 @@ const Mappage = () => {
         <div className="map-container center">
           <MapContainer city={city} />
         </div>
+      </main> */}
+      <main>
+        <form className="searchBar" onSubmit={handleSearch}>
+          <input type="search" name="city" placeholder="Enter city" />
+          <button className="default-button" type="submit">Search</button>
+        </form>
+        <div className="map-container center">
+          <MapContainer city={city} />
+        </div>
       </main>
+
     </div>
   );
 }
