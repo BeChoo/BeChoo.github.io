@@ -19,24 +19,17 @@
   margin-bottom: 10px;
 }
 
-/* Center inputs and submit button */
 .login input[type="email"],
 .login input[type="password"],
 .login input[type="submit"],
 .login input[type="text"] {
-  /* Include type="text" to apply the same styles */
-  width: 100%;
-  /* width: calc(100% - 40px); */
-  /* Set inputs and submit button to fill the width of the form minus some padding */
+  width: calc(100% - 40px);
   margin-bottom: 10px;
-  /* Add some space between inputs and submit button */
 }
 
 input[type="submit"] {
   background-color: skyblue;
-  /* Set background color for submit button */
   padding: 10px;
-  /* Adjust padding for better appearance */
   cursor: pointer;
   border-radius: 10px;
 }
