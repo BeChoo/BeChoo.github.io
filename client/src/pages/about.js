@@ -1,8 +1,6 @@
-// Filename - pages/about.js
-
 import React from "react";
-import "./about.css"; // Import CSS file for styling
-import GoBeach from "../images/Go Beach.png"; // Adjusted import path
+import "./about.css";
+import GoBeach from "../images/Go Beach.png";
 
 const About = () => {
     return (
@@ -13,7 +11,7 @@ const About = () => {
             <h4>Brian Cho: brian.cho02@student.csulb.edu</h4>
             <h4>Chase Calero: chase.calero@student.csulb.edu</h4>
             <h4>Miguie Aquino: miguieyves.aquino@student.csulb.edu</h4>
-            <div><img src={GoBeach} alt="GoBeach"/></div>
+            <div><img src={GoBeach} alt="GoBeach" /></div>
         </div>
     );
 };
