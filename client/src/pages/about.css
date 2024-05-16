@@ -1,6 +1,9 @@
 .about-container {
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
-    height: 100vh; /* Set the height of the container to fill the viewport */
-    text-align: center; /* Center text horizontally */
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 800px;
+  text-align: center;
+}
