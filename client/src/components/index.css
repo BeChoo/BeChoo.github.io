@@ -13,7 +13,7 @@ Nav {
     align-items: center;
     width: 100%;
     max-width: 1200px;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .h1-style {
@@ -40,8 +40,6 @@ Nav {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-
-    /* Testing */
     font-size: 16px;
     font-family: inherit;
 }
@@ -54,7 +52,6 @@ Nav {
     display: block;
 }
 
-/* Testing below */
 .dropdown-btn {
     color: black;
     padding: 12px 16px;
@@ -65,8 +62,6 @@ Nav {
     cursor: pointer;
     width: 100%;
     text-align: left;
-
-    /* Testing */
     font-size: 16px;
     font-family: inherit;
 }
@@ -78,8 +73,6 @@ Nav {
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
-/* End Test */
 
 .dropbtn {
     background-color: #4CAF50;
