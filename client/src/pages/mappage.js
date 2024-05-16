@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import './mappage.css'; // Importing CSS for styling
-import MapContainer from './map'; // Importing MapContainer component
+import './mappage.css';
+import MapContainer from './map';
 
-// Functional component Mappage
 const Mappage = () => {
   const [city, setCity] = useState('');
 
   const handleSearch = (event) => {
     event.preventDefault();
     setCity(event.target.elements.city.value);
-    event.target.elements.city.value = ''; // Clear the input field after submitting
+    event.target.elements.city.value = '';
   };
 
   return (
@@ -20,7 +19,7 @@ const Mappage = () => {
       <main>
         <form className="searchBar" onSubmit={handleSearch}>
           <input type="search" name="city" placeholder="Enter city" />
-          <button type="submit">Search</button>
+          <button className='default-button' type="submit">Search</button>
         </form>
         <div className="map-container center">
           <MapContainer city={city} />
@@ -30,4 +29,4 @@ const Mappage = () => {
   );
 }
 
-export default Mappage; // Exporting Mappage component
+export default Mappage;

@@ -1,22 +1,30 @@
-/* Center everything on the homepage */
 header,
 main {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-/* Style for the search bar */
 .searchBar input[type="search"] {
-  width: 300px; 
-  padding: 10px; 
+  width: 300px;
+  padding: 10px;
 }
 
-/* Style for the map container */
+.default-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .map-container {
-  margin-top: 20px; 
+  margin-top: 20px;
   margin-right: 475px;
   display: flex;
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
 }
