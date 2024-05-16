@@ -33,7 +33,8 @@ const Navbar = () => {
                                 <button className="dropbtn">Profile</button>
                                 <div className="dropdown-content">
                                     <Link to="/profile">View Profile</Link>
-                                    <button onClick={logout}>Logout</button>
+                                    {/* <button onClick={logout}>Logout</button> */}
+                                    <button onClick={logout} className="dropdown-btn">Logout</button>
                                 </div>
                             </div>
                         ) : (
