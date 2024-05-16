@@ -16,16 +16,6 @@ main {
   align-items: center;
 }
 
-.default-button {
-  padding: 10px 20px;
-  margin: 0 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .map-container {
   display: flex;
   align-items: center;
@@ -62,13 +52,23 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  padding: 10px;
+  width: 600px;
+  padding: 20px;
 }
 
 .map-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 100%;
+  width: 100%;
+}
+
+.default-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
