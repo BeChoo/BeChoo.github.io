@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
-import { useUser } from "./UserContext"; // Ensure path to UserContext is correct
-import "./Hotel.css"; // Ensure path to CSS is correct
+import { useUser } from "./UserContext";
+import "./Hotel.css";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const Hotel = () => {
@@ -16,7 +16,6 @@ const Hotel = () => {
   const [nearbyPOIs, setNearbyPOIs] = useState([]);
   const { id } = useParams();
   const location = useLocation();
-  // Fallback to empty object if state is undefined
 
   const { checkIn, checkOut, adults } =
     JSON.parse(localStorage.getItem("hotelParams")) || {};
@@ -64,11 +63,11 @@ const Hotel = () => {
       if (response.data && response.data.categorizedListings.length > 0) {
         setOffers(response.data);
       } else {
-        throw new Error("No rooms available"); // Throws if no data
+        throw new Error("No rooms available");
       }
     } catch (error) {
       console.error("Failed to fetch hotel offers:", error);
-      setOffers(null); // Set offers to null to trigger the error message
+      setOffers(null);
     }
   };
 
@@ -97,14 +96,17 @@ const Hotel = () => {
       return;
     }
     try {
-      const { data } = await axios.post("https://gotel-backend.vercel.app/submitReview", {
-        userId: user._id,
-        hotelId: id,
-        hotelName: hotel.summary.name,
-        hotelImageURL: hotel.propertyGallery.images[0].image.url,
-        rating,
-        reviewText,
-      });
+      const { data } = await axios.post(
+        "https://gotel-backend.vercel.app/submitReview",
+        {
+          userId: user._id,
+          hotelId: id,
+          hotelName: hotel.summary.name,
+          hotelImageURL: hotel.propertyGallery.images[0].image.url,
+          rating,
+          reviewText,
+        }
+      );
       addReview(data.review);
       alert("Review submitted successfully!");
     } catch (error) {

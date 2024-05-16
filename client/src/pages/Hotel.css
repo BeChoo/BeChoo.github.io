@@ -2,11 +2,13 @@
   max-width: 1200px;
   margin: auto;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.hotel-container h2, .amenities-title, .policies-section h3 {
-  font-size: 22px; /* Standardizing section titles */
+.hotel-container h2,
+.amenities-title,
+.policies-section h3 {
+  font-size: 22px;
   margin-bottom: 10px;
 }
 
@@ -15,13 +17,13 @@
 #pricing,
 #details,
 #policies {
-    border-bottom: 1px solid #e0e0e0; /* Light grey border */
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 #policies {
-    border-bottom: none; /* Removes border for the last section */
+  border-bottom: none;
 }
 
 .image-gallery {
@@ -31,20 +33,20 @@
 }
 
 .main-image img {
-  width: 112%; /* Increase width as per your instructions */
-  height: 415px; /* Set fixed height as per your instructions */
+  width: 112%;
+  height: 415px;
 }
 
 .other-images {
-  width: 40%; /* Adjusted to maintain alignment and spacing */
+  width: 40%;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
 .thumbnail-image {
-  width: calc(50% - 5px); /* Adjusting width for 2 columns with gap */
-  height: 200px; /* Fixed height for uniformity */
+  width: calc(50% - 5px);
+  height: 200px;
 }
 
 .thumbnail-image img {
@@ -52,7 +54,6 @@
   height: 100%;
   object-fit: cover;
 }
-
 
 .details-nav ul {
   list-style: none;
@@ -77,8 +78,8 @@
 }
 
 .left-container h1 {
-    font-size: 30px; /* Adjust this value to your preferred font size */
-    margin-bottom: 10px; /* Optional: adjust spacing below the header */
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 
 .map-container {
@@ -87,41 +88,37 @@
   margin-right: 20px;
 }
 
-/* This will contain both the amenities and landmarks, ensuring they are side by side */
 .overview-section {
   display: flex;
-  justify-content: space-between; /* Ensures space between amenities and landmarks */
-  width: 100%; /* Full width */
+  justify-content: space-between;
+  width: 100%;
 }
 
-/* Container for amenities and its title */
 .amenities-container {
-  width: 60%; 
+  width: 60%;
 }
 
 .amenities-title {
   font-size: 22px;
-  font-weight: bold; 
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
 .amenities-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .amenity {
-  flex: 1 1 45%; /* Adjusts to fit two items per line */
-  padding: 5px; 
+  flex: 1 1 45%;
+  padding: 5px;
 }
 
-/* Container for landmarks */
 .landmarks-container {
-  width: 40%; 
-  margin-left: 20px; 
+  width: 40%;
+  margin-left: 20px;
 }
-
 
 .landmark {
   display: flex;
@@ -143,12 +140,11 @@
   width: 300px;
   height: 100px;
   margin-top: 10px;
-  display: block;  /* Creates proper box to write review in */
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Styling to review and score inputs */
 .review-form button {
   display: block;
   margin: 10px auto;
@@ -166,7 +162,7 @@
 .score {
   background-color: #4CAF50;
   color: white;
-  padding: 5px 10px; 
+  padding: 5px 10px;
   border-radius: 5px;
   margin-right: 10px;
 }
@@ -179,36 +175,33 @@
   border: 1px solid #ccc;
   background-color: white;
   padding: 10px 20px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-
 
 .rooms-flex-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; 
-  margin: 0 -10px; 
+  justify-content: space-around;
+  margin: 0 -10px;
 }
 
-/* Creates container for room pricing */
 .room-container {
   background-color: white;
   padding: 20px;
   margin: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  width: calc(50% - 20px); 
-  max-width: calc(50% - 20px); 
-  box-sizing: border-box; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: calc(50% - 20px);
+  max-width: calc(50% - 20px);
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
   .room-container {
-    width: 100%; 
-    max-width: 100%; 
+    width: 100%;
+    max-width: 100%;
   }
 }
 
-/* Handles all data in the room container */
 .room-container img {
   width: 100%;
   height: auto;
@@ -238,22 +231,23 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 -15px; 
+  margin: 0 -15px;
 }
 
 .service-item {
   flex: 0 1 32%;
-  padding: 0 15px; 
-  box-sizing: border-box; 
-  margin-bottom: 20px; 
+  padding: 0 15px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 .service-item span {
-  font-weight: bold; 
-  display: block; /* Ensures the bullet stays with the text */
+  font-weight: bold;
+  display: block;
 }
 
-.unique-to-location, .policies-section {
+.unique-to-location,
+.policies-section {
   margin-top: 20px;
 }
 
@@ -262,7 +256,7 @@
 }
 
 .policies-list p {
-  margin-bottom: 5px; /* Space between policies */
+  margin-bottom: 5px;
 }
 
 html {
