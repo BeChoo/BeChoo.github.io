@@ -35,3 +35,14 @@
     border: none;
     cursor: pointer;
 }
+
+/* Testing below */
+Nav {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.h1-style {
+    margin-top: 0;
+}

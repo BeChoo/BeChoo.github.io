@@ -115,10 +115,6 @@ html {
     animation: fade 8s infinite;
 }
 
-.h1-style {
-    margin-top: 0px;
-}
-
 .carousel-container {
     position: relative;
     overflow: hidden;
