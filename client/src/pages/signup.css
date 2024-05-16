@@ -1,15 +1,10 @@
-/* Container to center the sign-up form */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* Align items vertically */
 }
 
-/* margin-top: 85px; Set the top margin to the height of the Navbar */
-
-/* .login is where users will input account information */
 .login {
   text-align: center;
   width: 30vw;
@@ -18,13 +13,10 @@
   border-radius: 10px;
 }
 
-/* Stack inputs on top of each other */
 .login label,
 .login input {
   display: block;
-  /* Set inputs and labels to display block */
   margin-bottom: 10px;
-  /* Add some space between inputs */
 }
 
 /* Center inputs and submit button */
@@ -33,7 +25,8 @@
 .login input[type="submit"],
 .login input[type="text"] {
   /* Include type="text" to apply the same styles */
-  width: calc(100% - 40px);
+  width: 100%;
+  /* width: calc(100% - 40px); */
   /* Set inputs and submit button to fill the width of the form minus some padding */
   margin-bottom: 10px;
   /* Add some space between inputs and submit button */
