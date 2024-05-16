@@ -23,7 +23,7 @@ const Navbar = () => {
                             Home
                         </NavLink>
                         <NavLink to="/homepage" activeStyle>
-                            Use A Map
+                            Hotel Search
                         </NavLink>
                         <NavLink to="/about" activeStyle>
                             About Us
